@@ -1,0 +1,11 @@
+node_modules/
+data/*.sqlite
+playground/*.sqlite
+*.sqlite
+.idea/
+*.idea/
+jquery-2.2.1.min.js
+npm-debug.log
+*.jpeg
+*.png
+*.gif
