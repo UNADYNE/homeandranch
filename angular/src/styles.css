@@ -1,1 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+.indigo-light-5 {
+  background-color: #e8eaf6;
+}
+
+.indigo-light-4 {
+  background-color: #c5cae9;
+}
+
+.indigo-light-3 {
+  background-color: #9fa8da ;
+}
+
+.indigo-dark-4 {
+  background-color: #6a50af;
+}
+
+.green-light-5 {
+  background-color: #e8f5e9;
+}
+
+.green-light-4 {
+  background-color: #c8e6c9
+}
+
+.green-light-3 {
+  background-color: #a5d6a7;
+}
+
+.grey-dark-3 {
+  background-color: #424242;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.z-1 {
+  box-shadow: #424242 4px 2px 12px;
+}
+
+.rounded-5{
+  border-radius: 7px;
+}
+
+.transparent-50 {
+  opacity: .5;
+}
+
+.transparent-25 {
+  opacity: .25;
+}
+
+.transparent-75 {
+  opacity: .75;
+}
+
+.transparent-85 {
+  opacity: .85;
+}
+
+.block-button {
+  box-shadow: 0 0 0 0;
+  border-radius: 9px;
+  background-color: #ffffff;
+  height: 56px;
+  width: 100%;
+}
+
+.top-5 {
+  margin-top: 3vh;
+}

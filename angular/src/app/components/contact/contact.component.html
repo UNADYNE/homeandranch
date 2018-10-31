@@ -1,3 +1,27 @@
-<p>
-  contact works!
-</p>
+<div class="wrapper">
+  <!-- <img src="../../../assets/images/contact_bg.jpg" alt=""> -->
+</div>
+<div class="row justify-content-md-center top-5 transparent-85 text-white">
+  <div class="col-md-4 indigo-dark-4 rounded-5 ">
+    <h5 class="text-center">Submit Your Contact Info To Get Started</h5>
+    <form>
+      <div class="form-group col ">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" class="form-control form-control-lg" name="firstName" [(ngModel)]="firstName">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" class="form-control form-control-lg" name="lastName" [(ngModel)]="lastName">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" class="form-control form-control-lg" name="email" [(ngModel)]="email">
+        <label for="phone">Phone Number</label>
+        <input type="number" id="phone" class="form-control form-control-lg" name="phoneNumber" [(ngModel)]="phoneNumber">
+        <label for="message">Message</label>
+        <div class="input-group">
+            <textarea name="message" id="message" cols="62" rows="3" class="form-controll" [(ngModel)]="message"></textarea>
+        </div>
+        <br>
+        <button class="btn btn-light btn-block" (click)="onSubmitContact()">Submit</button>
+        <br>
+      </div>
+    </form>
+  </div>
+</div>
