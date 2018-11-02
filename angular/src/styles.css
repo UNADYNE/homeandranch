@@ -7,7 +7,7 @@
 }
 
 .indigo-light-3 {
-  background-color: #9fa8da ;
+  background-color: #9fa8da;
 }
 
 .indigo-dark-4 {
@@ -38,7 +38,7 @@
   box-shadow: #424242 4px 2px 12px;
 }
 
-.rounded-5{
+.rounded-5 {
   border-radius: 7px;
 }
 
@@ -68,4 +68,51 @@
 
 .top-5 {
   margin-top: 3vh;
+}
+
+.flash-warning {
+  position: absolute;
+  height: 4rem;
+  width: 50vw;
+  background-color: #bd4c4c;
+  color: #ffffff;
+  border-radius: 7px;
+  text-align: center;
+  margin-left: 25vw;
+  margin-top: 35vh;
+  z-index: 10;
+  font-size: 1.5em;
+}
+
+.flash-success {
+  position: absolute;
+  height: 4rem;
+  width: 50vw;
+  background-color: #00bb38;
+  color: #ffffff;
+  border-radius: 7px;
+  text-align: center;
+  margin-left: 25vw;
+  margin-top: 35vh;
+  z-index: 10;
+  font-size: 1.5em;
+}
+
+
+.card-local {
+  margin: 35vh 0 0 8vw;
+}
+
+@media (min-width :300px) and (max-width :480px) {
+  .card-local {
+    margin: 0 0 2.5vh 0;
+  }
+}
+
+
+@media (min-width :50px) and (max-width :300px) {
+  .card-local {
+    margin: 0 0 1.5vh 0;
+    float: none;
+  }
 }

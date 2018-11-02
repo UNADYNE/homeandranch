@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MailService } from '../../services/mail.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class ContactComponent implements OnInit {
   phoneNumber: String;
   message: String;
 
-  constructor(private mailService: MailService) { }
+  constructor(private mailService: MailService,
+              private flash: FlashMessagesService) { }
 
   ngOnInit() {
   }
@@ -32,12 +34,14 @@ export class ContactComponent implements OnInit {
 
     if(!this.mailService.validateEmail(data.email)){
       console.log("valid email required");
+      this.flash.show('A valid email address is required.',{cssClass: 'flash-warning', timeout: 2000});
       return false;
     }
     this.mailService.storeContact(data).subscribe(results => {
       if (results) {
-        console.log(results);
+        this.flash.show('Your contact information has been sent to a Realtor.  Thank You!',{cssClass: 'flash-success', timeout: 4000});
       }
+
     });
   }
 

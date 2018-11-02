@@ -17,7 +17,6 @@ export class MailService {
 
   storeContact(data) {
     const headers = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-    console.log(headers);
     return this.http.post(`${this.apiUrl}contacts/store-contact`, data, headers);
   }
 
