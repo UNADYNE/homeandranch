@@ -1,12 +1,11 @@
 nav {
-  position: fixed;
+  position: relative;
   margin: 0;
   background-color: #000000;
   width: 100vw;
   height: 3rem;
   box-shadow: #292838 3px 3px 10px;
 }
-
 
 .desktop-nav {
   display: grid;
@@ -15,32 +14,35 @@ nav {
   justify-items: center;
 }
 
-/* .desktop-nav div {
+.desktop-nav div {
   margin-top: .5em;
-} */
+}
 
-/*
+
 .mobile-navbar-link-list {
   margin-top: 3em;
   list-style: none;
   color: white;
   opacity: 1;
-} */
-/*
-.mobile-navbar-link-list li {
-  margin: 1em 0;
-} */
-
-.side-menu {
-  position: absolute;
-  background-color: #292838;
-  padding-bottom: 3rem;
-  opacity: .66;
-  height: 85vh;
-  width: 75vw;
-  z-index: 10;
 }
 
+
+.mobile-navbar-link-list li {
+  margin-top: 1.5em;
+  margin-left: 1em;
+}
+
+.side-menu {
+  position: relative;
+  background-color: #292838;
+  padding-bottom: 3rem;
+  opacity: .75;
+  height: 85vh;
+  width: 75vw;
+  margin: 2.5em 0;
+  overflow: scroll;
+  z-index: 10;
+}
 
 .side-menu-fade-in {
   animation: open-side-menu .75s ease-in;
@@ -50,22 +52,19 @@ nav {
   animation: close-side-menu .5s ease-in;
 }
 
-
 #mobile-menu-button {
   position: absolute;
+  margin-left: 15px;
   font-size: 1.5em;
   z-index: 3;
 }
 
 #side-menu-close-button {
   position: absolute;
+  margin-left: 15px;
   font-size: 2em;
   z-index: 3;
 }
-
-
-
-
 
 @keyframes open-side-menu {
   0% {
