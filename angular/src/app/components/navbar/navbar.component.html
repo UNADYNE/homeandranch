@@ -1,19 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">UHR</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/']">Home</a>
+<nav class="navbar">
+  <div class="hide-on-medium desktop-nav text-white">
+
+    <div class="box-button hide-on-medium" [routerLink]="['/']">Home</div>
+
+    <div class="box-button hide-on-medium" [routerLink]="['/contact']">Contact</div>
+
+    <div class="box-button hide-on-medium" [routerLink]="['/about']">About</div>
+
+    <div class="box-button hide-on-medium">Search</div>
+
+  </div>
+
+
+  <!-- MOBILE NAV -->
+  <span class="hide-on-large text-white">
+    <a id="mobile-menu-button" #menuButton (click)="openSideNav()">
+      <fa-icon [icon]="faBars" class="hide-on-large text-white"></fa-icon>
+    </a>
+  </span>
+  <span class="hide-on-large text-white">
+    <a id="side-menu-close-button" #sideMenuCloseButton (click)="closeSideNav()">
+      <fa-icon [icon]="faTimes" class="hide-on-large text-white"></fa-icon>
+    </a>
+  </span>
+  <div class="side-menu" #sideMenu>
+    <ul class="mobile-navbar-link-list">
+      <li (click)="closeSideNav()">
+        <div [routerLink]="['/']">Home</div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/about']">About</a>
+      <li (click)="closeSideNav()">
+        <div [routerLink]="['/contact']">Contact</div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/contact']">Contact</a>
+      <li (click)="closeSideNav()">
+        <div [routerLink]="['/about']">About</div>
       </li>
     </ul>
   </div>

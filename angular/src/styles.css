@@ -1,3 +1,10 @@
+* {
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
 .indigo-light-5 {
   background-color: #e8eaf6;
 }
@@ -50,6 +57,14 @@
   opacity: .25;
 }
 
+.transparent-33 {
+  opacity: .33;
+}
+
+.transparent-66 {
+  opacity: .66;
+}
+
 .transparent-75 {
   opacity: .75;
 }
@@ -60,59 +75,98 @@
 
 .block-button {
   box-shadow: 0 0 0 0;
-  border-radius: 9px;
+  /* border-radius: 9px; */
   background-color: #ffffff;
   height: 56px;
   width: 100%;
 }
 
-.top-5 {
-  margin-top: 3vh;
+.box-button {
+  cursor: pointer;
+  padding: .3em .25em;
+  height: 50%;
+  width: 100;
+  text-align: center;
 }
 
+.box-button:hover {
+  border: white solid .1em;
+}
+
+/* .top-5 {
+  margin-top: 3vh;
+} */
+
 .flash-warning {
+  display: grid;
   position: absolute;
-  height: 4rem;
-  width: 50vw;
+  grid-auto-rows: minmax(2em, auto);
   background-color: #bd4c4c;
   color: #ffffff;
   border-radius: 7px;
   text-align: center;
-  margin-left: 25vw;
-  margin-top: 35vh;
   z-index: 10;
   font-size: 1.5em;
+  align-self: center;
+  opacity: .85;
 }
 
 .flash-success {
+  display: grid;
   position: absolute;
-  height: 4rem;
-  width: 50vw;
+  grid-auto-rows: minmax(4em, auto);
   background-color: #00bb38;
   color: #ffffff;
   border-radius: 7px;
   text-align: center;
-  margin-left: 25vw;
-  margin-top: 35vh;
   z-index: 10;
   font-size: 1.5em;
+  justify-self: center;
+  opacity: .85;
 }
 
 
-.card-local {
+/* .card-local {
   margin: 35vh 0 0 8vw;
-}
+} */
 
-@media (min-width :300px) and (max-width :480px) {
-  .card-local {
-    margin: 0 0 2.5vh 0;
+/* MEDIA QUERIES */
+@media screen and (min-width: 900px) {
+  .hide-on-large {
+    display: none;
+  }
+
+  .side-menu {
+    display: none;
   }
 }
 
+@media screen and (max-width: 899px) {
+  .hide-on-medium {
+    display: none;
+  }
 
-@media (min-width :50px) and (max-width :300px) {
-  .card-local {
-    margin: 0 0 1.5vh 0;
-    float: none;
+  .flow-text {
+    font-size: .75em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hide-on-medium {
+    display: none;
+  }
+
+  .flow-text {
+    font-size: .5em;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .hide-on-medium {
+    display: none;
+  }
+
+  .flow-text {
+    font-size: .33em;
   }
 }

@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   reset() {
     for (let i = 0; i < this.slideArray.length; i++) {
       this.slideArray[i].nativeElement.style.display = "none";
-      this.slideArray[i].nativeElement.classList.remove("zoom");
+      // this.slideArray[i].nativeElement.classList.remove("zoom");
       this.slideArray[i].nativeElement.classList.remove("fade-in");
       this.slideArray[i].nativeElement.style.opacity = "0";
     }
@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.slideArray[this.current].nativeElement.style.opacity = "1";
       this.slideArray[this.current].nativeElement.classList.remove("fade-in");
-      this.slideArray[this.current].nativeElement.classList.add("zoom");
+      // this.slideArray[this.current].nativeElement.classList.add("zoom");
     }, this.animationTimer);
     // console.log("slideShow()");
   }
@@ -76,6 +76,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     setInterval(() => {
       this.doSlideShow();
       // console.log("slideInterval()");
-    }, 15000);
+    }, 6000);
   }
 }
