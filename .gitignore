@@ -7,5 +7,4 @@ playground/*.sqlite
 jquery-2.2.1.min.js
 npm-debug.log
 *.jpeg
-*.png
 *.gif
