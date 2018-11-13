@@ -7,6 +7,9 @@
 
     <div class="box-button hide-on-medium" [routerLink]="['/about']">About</div>
 
+    <div class="box-button hide-on-medium" [routerLink]="['/map']">Map</div>
+
+
     <div class="box-button hide-on-medium">Search</div>
 
   </div>
@@ -33,6 +36,9 @@
       </li>
       <li (click)="closeSideNav()">
         <div [routerLink]="['/about']">About</div>
+      </li>
+      <li (click)="closeSideNav()">
+        <div [routerLink]="['/map']">Map</div>
       </li>
     </ul>
   </div>

@@ -13,6 +13,9 @@ const io = require('socket.io').listen(server);
 const session = require('express-session');
 const config = require('./config/database');
 const contacts = require('./routes/contacts');
+const scrape = require('./routes/scrape');
+
+
 
 app.set('port', (process.env.PORT || 8080));
 
@@ -32,12 +35,15 @@ app.use(sessionMiddleware);
 
 app.use(cors());
 
-app.use(bodyParser.json({limit: '3mb'}));
+app.use(bodyParser.json({
+    limit: '3mb'
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/contacts', contacts);
+app.use('/scrape', scrape);
 
 
 

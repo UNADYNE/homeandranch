@@ -16,10 +16,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   //query selectors
   @ViewChildren("slide")
   slide;
-  @ViewChild("arrow-right")
-  arrowRight;
-  @ViewChild("arrow-left")
-  arrowLeft;
 
   slideArray: any[];
 

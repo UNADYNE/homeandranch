@@ -1,0 +1,32 @@
+agm-map {
+  height: 100vh;
+  width: 75vw;
+}
+
+.map-icon-image {
+  width: 33%;
+  height: 33%;
+}
+
+.map-icon-addr {
+  font-weight: 200;
+  font-size: 1.25em;
+  width: 50%;
+}
+
+.agm-info-window-content {
+  width: 10vw;
+}
+
+.info-window-elems {
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
+}
+
+.info-window-elems p {
+  /* border-bottom: #000000 solid 1px; */
+  font-weight: 500;
+  font-size: 1.25em;
+}
+
+.info-window-elems img {}

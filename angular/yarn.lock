@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@agm/core@^1.0.0-beta.5":
+  version "1.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@agm/core/-/core-1.0.0-beta.5.tgz#6dbceb666b2dbc4a868b97e1340a3faceb5f2113"
+
+"@agm/snazzy-info-window@^1.0.0-beta.5":
+  version "1.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@agm/snazzy-info-window/-/snazzy-info-window-1.0.0-beta.5.tgz#534a354e34031937f86e447c097eb74afe79bcd4"
+
 "@angular-devkit/architect@0.10.3":
   version "0.10.3"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.10.3.tgz#6e4fd76ca41fbb3e5dc2a29f662ba3ee4d1ad086"
@@ -5333,6 +5341,10 @@ snapdragon@^0.8.1:
     source-map "^0.5.6"
     source-map-resolve "^0.5.0"
     use "^3.1.0"
+
+snazzy-info-window@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/snazzy-info-window/-/snazzy-info-window-1.1.0.tgz#bb1e30b37af8fda8ff9006474085ad5486f06f0f"
 
 socket.io-adapter@~1.1.0:
   version "1.1.1"

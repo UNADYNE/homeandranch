@@ -1,6 +1,4 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from "@angular/core";
-import { ComponentService } from "../../services/component.service";
-import { ContactComponent } from "../contact/contact.component";
 
 import {
   faBars,
@@ -24,7 +22,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   @ViewChild("sideMenu") sideMenu: any;
   @ViewChild("sideMenuCloseButton") sideMenuCloseButton: any;
 
-  constructor(private contactComponent: ContactComponent) {}
+  constructor() {}
 
   ngOnInit() {}
 
