@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: `http://utahhomeandranch.com:8080/`
+  apiUrl: `https://utahhomeandranch.com:8080/`
 };
