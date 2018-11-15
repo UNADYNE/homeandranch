@@ -15,7 +15,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   lat: number;
   long: number;
   pos: any;
-  iconUrl: string = "../../../assets/images/icon_house.png";
+  iconUrl: string = `http://localhost:8080/assets/images/icon_house.png`;
   listings: any[];
 
   constructor(
@@ -49,16 +49,26 @@ export class MapComponent implements OnInit, AfterViewInit {
   //   // console.log(`tempArray: ${this.listings.length}`);
   // }
 
+  getMapIcon() {
+    this.mapService.getMapIcon().subscribe(icon => {
+      console.log(icon);
+    });
+  }
+
   outputData() {
-    this.searchService.getProperties().subscribe(results => {
+    this.searchService.getProperties().subscribe(res => {
       const tempArray = [];
-      if (results.response == 200) {
-        for (let i = 0; i < results.data.results.length; i++) {
-          tempArray.push(results.data.results[i]);
+      if (res.response == 200) {
+        for (let i = 0; i < res.data.results.length; i++) {
+          res.data.results[i].bathrooms = res.data.results[i].bathrooms.split(
+            "."
+          )[0];
+          tempArray.push(res.data.results[i]);
         }
         this.listings = tempArray;
       }
-      console.log(this.listings);
+      // this.getMapIcon();
+      // console.log(this.listings);
     });
   }
 }

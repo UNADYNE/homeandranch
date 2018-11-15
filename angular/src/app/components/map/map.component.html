@@ -2,14 +2,14 @@
   <ul>
     <li *ngFor="let prop of listings">
       <agm-marker [latitude]="prop.latitude" [longitude]="prop.longitude" [iconUrl]="iconUrl">
-        <agm-info-window [maxWidth]="300">
-          <div class="info-window-elems">
+        <div class="info-window">
+          <agm-info-window [maxWidth]="360">
             <img *ngIf="prop.image.length > 50" class="map-icon-image" src="{{prop.image}}">
             <p>{{prop.address}} {{prop.city}}, {{prop.state}}</p>
             <p> {{prop.bedrooms}} Bedrooms {{prop.bathrooms}} Bathrooms</p>
             <p>{{prop.sqFootage}} Square Feet</p>
-          </div>
-        </agm-info-window>
+          </agm-info-window>
+        </div>
       </agm-marker>
     </li>
   </ul>

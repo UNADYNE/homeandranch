@@ -1,3 +1,18 @@
-<p>
-  search works!
-</p>
+<div class="wrapper">
+  <div class="map">
+    <app-map></app-map>
+  </div>
+  <div class="side-listings">
+    <ul class="side-listings-ul">
+      <li *ngFor="let prop of properties" class="side-listings-li">
+          <img *ngIf="prop.image.length > 50" src="{{prop.image}}" alt="main_img">
+          <img *ngIf="prop.image.length < 50" src="../../../assets/images/no_img.png" alt="No Image Available">
+        <div class="side-listings-li-data">
+          <p>{{prop.address}}</p>
+          <p>{{prop.bedrooms}} bedrooms</p>
+        <p>{{prop.bathrooms}} bathrooms</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

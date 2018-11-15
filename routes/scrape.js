@@ -22,5 +22,9 @@ router.get('/hrr', (req, res) => {
         }
     });
 });
+//
+// router.get('/map-icon', (req, res) => {
+//     res.sendFile('../assets/images/icon_house.png');
+// });
 
 module.exports = router;

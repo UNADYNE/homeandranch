@@ -2,14 +2,13 @@ const express = require('express');
 const fs = require('fs');
 const app = express();
 const http = require('http');
-const server = http.createServer(app);
+const https = require('https');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
 // require('./config/passport')(passport);
-const io = require('socket.io').listen(server);
 const session = require('express-session');
 const config = require('./config/database');
 const contacts = require('./routes/contacts');
@@ -24,6 +23,25 @@ mongoose.connect(config.database);
 mongoose.connection.on('connected', () => {
     console.log('Connected to database ' + config.database);
 });
+
+/* http confg => dev*/
+const server = http.createServer(app);
+
+
+// /* https config => for prod */
+// const https = require('https');
+// const key = fs.readFileSync('../../../etc/letsencrypt/live/unadyne.com/privkey.pem');
+// const cert = fs.readFileSync('../../../etc/letsencrypt/live/unadyne.com/cert.pem');
+
+// const httpsOptions = {
+//     cert: cert,
+//     key: key
+// };
+
+// const server = https.createServer(httpsOptions, app);
+
+const io = require('socket.io').listen(server);
+
 
 const sessionMiddleware = session({
     secret: 'secret', // TODO generate hashed value later
