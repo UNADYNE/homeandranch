@@ -1,3 +1,4 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 * {
   /* overflow: hidden; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -5,6 +6,9 @@
   margin: 0;
 }
 
+.indigo {
+  background-color: #3f51b5;
+}
 
 .indigo-light-5 {
   background-color: #e8eaf6;
@@ -86,7 +90,6 @@
   cursor: pointer;
   padding: .3em .25em;
   height: 50%;
-  width: 100;
   text-align: center;
 }
 
@@ -125,7 +128,6 @@
   justify-self: center;
   opacity: .85;
 }
-
 
 /* .card-local {
   margin: 35vh 0 0 8vw;
@@ -170,4 +172,19 @@
   .flow-text {
     font-size: .33em;
   }
+}
+
+.us-button {
+  height: 3em;
+  width: 10em;
+  margin: 2% 35%;
+  border-radius: 5px;
+  border: none;
+}
+
+.mat-dialog-container {
+  max-width: 80vw;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 25;
 }

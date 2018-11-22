@@ -1,18 +1,55 @@
+<nav class="indigo searchnav">
+  <label for="area-filter"></label>
+  <input type="text"
+         id="area-filter"
+         placeholder="Search City, Zip, or MLS#"
+         name="areaFilter"
+         [(ngModel)]="areaFilters"
+  >
+  <button class="us-button" (click)="getProperties()" #areaFilterElm>Search</button>
+</nav>
 <div class="wrapper">
   <div class="map">
-    <app-map></app-map>
+    <agm-map [latitude]="41.281272" [longitude]="-111.954164" [zoom]="10">
+      <ul>
+        <li *ngFor="let prop of properties">
+            <agm-marker
+              [latitude]="prop.latitude"
+              [longitude]="prop.longitude"
+              [iconUrl]="iconUrl"
+              [title]="prop.listno"
+              (markerClick)="test($event)"
+
+            >
+                <agm-info-window [maxWidth]="400">
+                  <img *ngIf="prop.image.length > 50" class="map-icon-image" src="{{prop.image}}">
+                  <p>{{prop.listprice}}</p>
+                  <p>{{prop.address}} {{prop.city}}, {{prop.state}}</p>
+                  <p> {{prop.totbed}} Bedrooms {{prop.totbath}} Bathrooms</p>
+                </agm-info-window>
+            </agm-marker>
+        </li>
+      </ul>
+    </agm-map>
   </div>
   <div class="side-listings">
     <ul class="side-listings-ul">
-      <li *ngFor="let prop of properties" class="side-listings-li">
-          <img *ngIf="prop.image.length > 50" src="{{prop.image}}" alt="main_img">
-          <img *ngIf="prop.image.length < 50" src="../../../assets/images/no_img.png" alt="No Image Available">
-        <div class="side-listings-li-data">
-          <p>{{prop.address}}</p>
-          <p>{{prop.bedrooms}} bedrooms</p>
-        <p>{{prop.bathrooms}} bathrooms</p>
+      <li
+        *ngFor="let prop of properties"
+        class="side-listings-li"
+        id="{{prop.listno}}"
+        (click)="loadProperty($event)"
+        [style.background-image]="testSani(prop.image)"
+        #listingItem
+      >
+        <div class="data" (click)="block($event)">
+          <p class="listing-data">{{prop.listprice}} - {{prop.totbed}} Bed {{prop.totbath}} Bath {{prop.totsqf}} Square Feet </p>
+          <p class="listing-data">{{prop.address}} {{prop.zip}}</p>
+          <!--<p class="listing-names">Listed by: {{prop.agtfirst}} {{prop.agtlast}} - {{prop.offname}}</p>-->
+          <!--<p class="listing-names">MLS# {{prop.listno}}</p>-->
         </div>
       </li>
     </ul>
   </div>
 </div>
+

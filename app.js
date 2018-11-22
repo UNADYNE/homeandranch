@@ -13,7 +13,7 @@ const session = require('express-session');
 const config = require('./config/database');
 const contacts = require('./routes/contacts');
 const scrape = require('./routes/scrape');
-
+const search = require('./routes/search');
 
 
 app.set('port', (process.env.PORT || 8080));
@@ -62,6 +62,7 @@ app.use(passport.session());
 
 app.use('/contacts', contacts);
 app.use('/scrape', scrape);
+app.use('/search', search);
 
 
 

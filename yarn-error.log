@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Steve\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add letsemcrypt
+  C:\Program Files\nodejs\node.exe C:\Users\Steve\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add through2
 
 PATH: 
   C:\Python27\;C:\Python27\Scripts;C:\ProgramData\Boxstarter;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\dotnet\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\PuTTY\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\Intuit\QBPOSSDKRuntime;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\Steve\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\Steve\AppData\Local\.meteor\;C:\Users\Steve\AppData\Local\Microsoft\WindowsApps;C:\Users\Steve\AppData\Roaming\npm
@@ -31,6 +31,7 @@ npm manifest:
       "passport": "^0.4.0",
       "passport-jwt": "^4.0.0",
       "request": "^2.88.0",
+      "rets-client": "^5.2.3",
       "socket.io": "^2.1.1"
     },
     "devDependencies": {},
@@ -56,14 +57,4 @@ Lockfile:
   No lockfile
 
 Trace: 
-  Error: https://registry.yarnpkg.com/letsemcrypt: Not found
-      at Request.params.callback [as _callback] (C:\Users\Steve\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:62098:18)
-      at Request.self.callback (C:\Users\Steve\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:123085:22)
-      at Request.emit (events.js:182:13)
-      at Request.<anonymous> (C:\Users\Steve\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:124068:10)
-      at Request.emit (events.js:182:13)
-      at IncomingMessage.<anonymous> (C:\Users\Steve\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:123988:12)
-      at Object.onceWrapper (events.js:273:13)
-      at IncomingMessage.emit (events.js:187:15)
-      at endReadableNT (_stream_readable.js:1094:12)
-      at process.internalTickCallback (internal/process/next_tick.js:72:19)
+  Error: EPERM: operation not permitted, unlink 'D:\www\homeandranch\node_modules\node-expat\build\Release\node_expat.node'

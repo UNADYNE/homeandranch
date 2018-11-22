@@ -1,0 +1,46 @@
+.container {
+  display: grid;
+  /*grid-template-rows: repeat(4, 1fr);*/
+
+}
+
+.prop-pic {
+  width: 600px;
+  height: 400px;
+}
+
+.prop-pics-ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-self: center;
+  list-style: none;
+  grid-gap: .5em;
+  margin-left: 2em;
+  width: 95%;
+}
+
+.prop-pic-li-div {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: auto;
+  height: 360px;
+  box-shadow: #424242 3px 3px 12px;
+}
+
+.property-data {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 2em;
+}
+
+.property-data p h1 h2 h3 {
+  font-weight: bold;
+}
+
+.main-pic {
+  margin-left: 28%;
+  margin-bottom: 1em;
+  height: 480px;
+  width: 640px;
+  box-shadow: #424242 3px 3px 12px;
+}

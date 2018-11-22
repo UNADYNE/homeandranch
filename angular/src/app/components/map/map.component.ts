@@ -10,7 +10,6 @@ import { Observable } from "rxjs";
   styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit, AfterViewInit {
-  @ViewChild("map") map: any;
 
   lat: number;
   long: number;
@@ -24,20 +23,19 @@ export class MapComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit() {
-    this.getLocation();
-    this.outputData();
+
   }
 
   ngAfterViewInit() {}
 
-  getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(pos => {
-        this.lat = pos.coords.latitude;
-        this.long = pos.coords.longitude;
-      });
-    }
-  }
+  // getLocation() {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(pos => {
+  //       this.lat = pos.coords.latitude;
+  //       this.long = pos.coords.longitude;
+  //     });
+  //   }
+  // }
 
   // outputData() {
   //   const tempArray = [];
@@ -49,26 +47,26 @@ export class MapComponent implements OnInit, AfterViewInit {
   //   // console.log(`tempArray: ${this.listings.length}`);
   // }
 
-  getMapIcon() {
-    this.mapService.getMapIcon().subscribe(icon => {
-      console.log(icon);
-    });
-  }
-
-  outputData() {
-    this.searchService.getProperties().subscribe(res => {
-      const tempArray = [];
-      if (res.response == 200) {
-        for (let i = 0; i < res.data.results.length; i++) {
-          res.data.results[i].bathrooms = res.data.results[i].bathrooms.split(
-            "."
-          )[0];
-          tempArray.push(res.data.results[i]);
-        }
-        this.listings = tempArray;
-      }
+  // getMapIcon() {
+  //   this.mapService.getMapIcon().subscribe(icon => {
+  //     console.log(icon);
+  //   });
+  // }
+  //
+  // outputData() {
+  //   this.searchService.getProperties().subscribe(res => {
+  //     const tempArray = [];
+  //     if (res.response == 200) {
+  //       for (let i = 0; i < res.data.results.length; i++) {
+  //         res.data.results[i].bathrooms = res.data.results[i].bathrooms.split(
+  //           "."
+  //         )[0];
+  //         tempArray.push(res.data.results[i]);
+  //       }
+  //       this.listings = tempArray;
+  //     }
       // this.getMapIcon();
       // console.log(this.listings);
-    });
-  }
+  //   });
+  // }
 }
