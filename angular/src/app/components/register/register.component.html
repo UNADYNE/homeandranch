@@ -1,0 +1,52 @@
+<div class="container navy-text">
+  <br><br>
+  <h2 class="page-header">Add New Member Data</h2>
+  <form (submit)="onRegisterSubmit()">
+
+    <div class="us-input-field">
+      <label for="first-name">First Name</label>
+      <input type="text" [(ngModel)]="firstName" name="first-name" id="first-name">
+    </div>
+
+    <div class="us-input-field">
+      <label for="last-name">Last Name</label>
+      <input type="text" [(ngModel)]="lastName" name="last-name" id="last-name">
+    </div>
+
+    <div class="us-input-field">
+      <label for="username">Username</label>
+      <input type="text" [(ngModel)]="username" name="username" id="username">
+    </div>
+
+    <div class="us-input-field">
+      <label for="email">Email</label>
+      <input type="text" [(ngModel)]="email" name="email" id="email">
+    </div>
+
+    <div class="us-input-field">
+      <label for="phone">Phone Number</label>
+      <input type="text" [(ngModel)]="phone" name="phone" id="phone">
+    </div>
+
+    <div class="us-input-field">
+      <label for="password">Password</label>
+      <input type="password" [(ngModel)]="password" name="password" id="password">
+    </div>
+
+    <div class="us-input-field">
+      <label for="conpass">Confirm Password</label>
+      <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" id="conpass">
+    </div>
+    <p>
+    <span class="us-input-field">
+      <label for="admin">isAdmin</label>
+      <select name="admin" id="admin" [(ngModel)]="isAdmin">
+        <option value="true">True</option>
+        <option value="false">False</option>
+      </select>
+    </span>
+
+    <input type="submit" class="us-button" value="Add User">
+  </form>
+  <br><br>
+</div>

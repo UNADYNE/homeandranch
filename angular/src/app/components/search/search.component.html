@@ -19,7 +19,6 @@
               [iconUrl]="iconUrl"
               [title]="prop.listno"
               (markerClick)="test($event)"
-
             >
                 <agm-info-window [maxWidth]="400">
                   <img *ngIf="prop.image.length > 50" class="map-icon-image" src="{{prop.image}}">
@@ -37,14 +36,15 @@
       <li
         *ngFor="let prop of properties"
         class="side-listings-li"
+        title="{{prop.listno}}"
         id="{{prop.listno}}"
         (click)="loadProperty($event)"
         [style.background-image]="testSani(prop.image)"
         #listingItem
       >
-        <div class="data" (click)="block($event)">
-          <p class="listing-data">{{prop.listprice}} - {{prop.totbed}} Bed {{prop.totbath}} Bath {{prop.totsqf}} Square Feet </p>
-          <p class="listing-data">{{prop.address}} {{prop.zip}}</p>
+        <div class="data" title="{{prop.listno}}" (click)="loadProperty($event)"  >
+          <p class="listing-data" title="{{prop.listno}}">{{prop.listprice}} - {{prop.totbed}} Bed {{prop.totbath}} Bath {{prop.totsqf}} Square Feet </p>
+          <p class="listing-data" title="{{prop.listno}}">{{prop.address}} {{prop.zip}}</p>
           <!--<p class="listing-names">Listed by: {{prop.agtfirst}} {{prop.agtlast}} - {{prop.offname}}</p>-->
           <!--<p class="listing-names">MLS# {{prop.listno}}</p>-->
         </div>

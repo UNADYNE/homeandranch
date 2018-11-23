@@ -1,8 +1,6 @@
 const express = require('express');
 const fs = require('fs');
 const app = express();
-const http = require('http');
-const https = require('https');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -14,7 +12,8 @@ const config = require('./config/database');
 const contacts = require('./routes/contacts');
 const scrape = require('./routes/scrape');
 const search = require('./routes/search');
-
+const users = require('./routes/users');
+const mail = require('./routes/mail');
 
 app.set('port', (process.env.PORT || 8080));
 
@@ -25,20 +24,21 @@ mongoose.connection.on('connected', () => {
 });
 
 /* http confg => dev*/
-const server = http.createServer(app);
+// const http = require('http');
+// const server = http.createServer(app);
 
 
 // /* https config => for prod */
-// const https = require('https');
-// const key = fs.readFileSync('../../../etc/letsencrypt/live/unadyne.com/privkey.pem');
-// const cert = fs.readFileSync('../../../etc/letsencrypt/live/unadyne.com/cert.pem');
+const https = require('https');
+const key = fs.readFileSync('../../../etc/letsencrypt/live/unadyne.com/privkey.pem');
+const cert = fs.readFileSync('../../../etc/letsencrypt/live/unadyne.com/cert.pem');
 
-// const httpsOptions = {
-//     cert: cert,
-//     key: key
-// };
+const httpsOptions = {
+    cert: cert,
+    key: key
+};
 
-// const server = https.createServer(httpsOptions, app);
+const server = https.createServer(httpsOptions, app);
 
 const io = require('socket.io').listen(server);
 
@@ -63,8 +63,8 @@ app.use(passport.session());
 app.use('/contacts', contacts);
 app.use('/scrape', scrape);
 app.use('/search', search);
-
-
+app.use('/users', users);
+app.use('/mail', mail);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

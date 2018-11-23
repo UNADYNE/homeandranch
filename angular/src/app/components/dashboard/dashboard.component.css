@@ -1,0 +1,23 @@
+.container{
+  padding: 2em 20%;
+}
+
+.container ul {
+  list-style: none;
+}
+
+.container li {
+  display: grid;
+  grid-template-rows: repeat(5, .25fr);
+}
+
+.container h1, h2, h3, h4, h5, h6, p {
+ font-weight: bold;
+}
+
+.us-hr {
+  margin: 1em 0;
+  height: 2px;
+  border-top: #0015ff solid 3px;
+  border-bottom: #0015ff solid 3px;
+}

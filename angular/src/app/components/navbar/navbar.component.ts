@@ -5,6 +5,7 @@ import {
   faChevronCircleLeft,
   faTimes
 } from "@fortawesome/free-solid-svg-icons";
+import {AuthService} from "../../services/auth.service";
 
 declare let $: any;
 
@@ -18,17 +19,20 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   faChevronCircleLeft = faChevronCircleLeft;
   faTimes = faTimes;
 
+
+  constructor(private authService: AuthService) {}
+
   @ViewChild("menuButton") menuButton: any;
   @ViewChild("sideMenu") sideMenu: any;
   @ViewChild("sideMenuCloseButton") sideMenuCloseButton: any;
-
-  constructor() {}
-
+  isAdmin: boolean = this.authService.isAdmin();
+  loggedIn: boolean = this.authService.loggedIn();
   ngOnInit() {}
 
   ngAfterViewInit() {
     this.sideMenu.nativeElement.style.display = "none";
     this.sideMenuCloseButton.nativeElement.style.display = "none";
+    console.log(`loggedIn: ${this.loggedIn}`);
   }
 
   openSideNav() {
@@ -48,5 +52,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       this.sideMenu.nativeElement.classList.remove("side-menu-fade-in");
       this.sideMenu.nativeElement.style.display = "none";
     }, 450);
+  }
+
+  logOut() {
+    this.authService.logOut();
+    location.reload();
   }
 }

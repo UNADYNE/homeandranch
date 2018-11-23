@@ -1,7 +1,10 @@
+.wrapper {
+  color: #1a237e;
+}
+
 .container {
   display: grid;
   /*grid-template-rows: repeat(4, 1fr);*/
-
 }
 
 .prop-pic {
@@ -27,13 +30,41 @@
   box-shadow: #424242 3px 3px 12px;
 }
 
+.data-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 1em 2em;
+  grid-gap: 1em;
+}
+.address {
+  padding: 0 20%;
+}
+
+.price {
+  margin-left: 35%;
+}
+#year-built {
+  margin-left: 35%;
+}
+
+.price span {
+  color: #558b2f;
+
+}
 .property-data {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  padding: 2em;
+  grid-template-rows: repeat(3, .75fr);
 }
 
 .property-data p h1 h2 h3 {
+  font-weight: bold;
+}
+
+.property-description {
+  padding: 0 2em;
+}
+
+.property-description p {
   font-weight: bold;
 }
 

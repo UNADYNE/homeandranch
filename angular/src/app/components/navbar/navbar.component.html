@@ -1,5 +1,6 @@
 <nav class="navbar">
   <div class="hide-on-medium desktop-nav text-white">
+    <div *ngIf="loggedIn" class="box-button hide-on-medium" [routerLink]="['/dashboard']">Dashboard</div>
 
     <div class="box-button hide-on-medium" [routerLink]="['/']">Home</div>
 
@@ -8,6 +9,9 @@
     <div class="box-button hide-on-medium" [routerLink]="['/about']">About</div>
 
     <div class="box-button hide-on-medium" [routerLink]="['/search']">Search</div>
+
+    <div *ngIf="loggedIn" class="box-button hide-on-medium" (click)="logOut()">Logout</div>
+
 
   </div>
 

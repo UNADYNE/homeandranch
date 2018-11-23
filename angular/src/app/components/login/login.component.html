@@ -1,0 +1,14 @@
+<div class="container">
+  <h2 class="page-header">Please Log In</h2>
+  <form>
+    <div class="us-input-field">
+      <label>Username</label>
+      <input type="text" [(ngModel)]="username" name="username">
+    </div>
+    <div class="us-input-field">
+      <label>Password</label>
+      <input type="password" [(ngModel)]="password" name="password">
+    </div>
+    <button class="us-button teal-darken-4" (click)="onLoginSubmit()">Log In</button>
+  </form>
+</div>

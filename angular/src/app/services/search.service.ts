@@ -22,4 +22,12 @@ export class SearchService {
     return this.http.get(`${this.apiUrl}scrape/get-media?listno=${listno}`);
   }
 
+
+  getAllContacts(): any {
+    return this.http.get(`${this.apiUrl}contacts/get-all-contacts`);
+  }
+
+  downloadProperties(): any {
+    return this.http.get(`${this.apiUrl}scrape/rets-client`);
+  }
 }

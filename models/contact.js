@@ -26,7 +26,7 @@ const ContactSchema = mongoose.Schema({
         type: String
     },
     date: {
-        type: Date
+        type: String
     }
 });
 
@@ -34,4 +34,8 @@ const Contact = module.exports = mongoose.model('Contact', ContactSchema);
 
 module.exports.storeContact = (data, callback) => {
     data.save(callback);
+};
+
+module.exports.getAllContacts = (data, contacts) => {
+  Contact.find({}, contacts);
 };

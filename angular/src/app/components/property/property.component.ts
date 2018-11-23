@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild, ElementRef} from '@angular/core';
-import {MatDialog, MatDialogConfig, MatDialogContainer} from "@angular/material";
+import {MatDialog} from "@angular/material";
 import {SearchService} from "../../services/search.service";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 
@@ -37,6 +37,7 @@ export class PropertyComponent implements OnInit, AfterViewInit {
 
   getProperty() {
     this.property = JSON.parse(localStorage.getItem('prop'));
+    console.log(this.property);
   }
 
   sanitizePic(url): SafeHtml {
@@ -63,7 +64,12 @@ export class PropertyComponent implements OnInit, AfterViewInit {
     if(this.canRender){
       this.setColNumsForPics();
     }
-    console.log(this.property);
+  }
+  openDialog(): void {
+    const dialogRef = this.matDialog.open(PropertyComponent, {
+      width: '80vw',
+      height: '80vh'
+    });
   }
 
   setColNumsForPics() {

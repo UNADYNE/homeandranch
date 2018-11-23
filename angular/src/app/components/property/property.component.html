@@ -1,18 +1,48 @@
-<div *ngIf="canRender" class="container">
-  <button class="us-button" (click)="closeDialog()">Close</button>
-  <div class="property-data">
-    <h2>{{property.listprice}}</h2>
-    <p>{{property.housenum}} {{property.dirpre}} {{property.street}}</p>
-  </div>
-  <div class="main-pic" [style.background-image]="sanitizePic(property.image)"></div>
-  <ul class="prop-pics-ul" #picUl>
-    <li *ngFor="let pic of pics" class="prop-pics-li" #picLi>
-      <div class="prop-pic-li-div" [style.background-image]="sanitizePic(pic.url)">
+<div class="wrapper">
+  <div *ngIf="canRender" class="container">
+    <button class="us-button" (click)="closeDialog()">Close</button>
+    <h1 class="address">{{property.housenum}} {{property.dirpre}} {{property.street}}
+      {{property.dirpost}}{{property.streettype}} {{property.city}}, {{property.state}} {{property.zip}}
+    </h1>
+    <h2 class="price">List Price: <span>{{property.listprice}}</span></h2>
+    <h2 id="year-built">Built in {{property.yearblt}}</h2>
+    <h2 class="price" *ngIf="property.yearremodeled.length > 0">Remodeled in {{property.yearremodeled}}</h2>
+    <div class="data-wrapper">
+      <div class="property-data">
+        <h4>{{property.totbath}} Bathrooms</h4>
+        <h4>{{property.totbed}} Bedrooms</h4>
+        <h4>{{property.totsqf}} Square Feet</h4>
       </div>
-    </li>
-  </ul>
-  <h1>listno: {{property.listno}}</h1>
+      <div class="property-data">
+        <h4>Air Conditioning | {{property.aircon}}</h4>
+        <h4>Heating | {{property.heating}}</h4>
+        <h4>Utilities | {{property.utilities}}</h4>
+      </div>
+      <div class="property-data">
+        <h4>Parking | {{property.garage}}</h4>
+        <h4>Amenities | {{property.amenities}}</h4>
+        <h4>Storage | {{property.storage}}</h4>
+      </div>
+      <div class="property-data">
+        <h4>School District | {{property.schooldistrict}}</h4>
+        <h4>Water | {{property.water}}</h4>
+        <h4>Roof | {{property.roof}}</h4>
+      </div>
+    </div>
+    <div class="property-description">
+      <p>{{property.publicremarks}}</p>
+    </div>
+
+    <div class="main-pic" [style.background-image]="sanitizePic(property.image)"></div>
+    <ul class="prop-pics-ul" #picUl>
+      <li *ngFor="let pic of pics" class="prop-pics-li" #picLi>
+        <div class="prop-pic-li-div" [style.background-image]="sanitizePic(pic.url)">
+        </div>
+      </li>
+    </ul>
+    <h1>listno: {{property.listno}}</h1>
+  </div>
+  <button class="us-button" (click)="closeDialog()">Close</button>
 </div>
-<button class="us-button" (click)="closeDialog()">Close</button>
 <!--</div>-->
 

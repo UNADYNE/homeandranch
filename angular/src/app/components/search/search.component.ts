@@ -13,6 +13,7 @@ import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {AgmMarker} from "@agm/core";
 import {MatDialog} from '@angular/material';
 import {PropertyComponent} from "../property/property.component";
+import {ListnoDirective} from '../../directives/listno.directive';
 
 @Component({
   selector: 'app-search',
@@ -123,7 +124,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   loadProperty(event) {
-    const query = `?listno=${event.target.id}`;
+    const query = `?listno=${event.target.title}`;
     const finalProp = {};
     this.searchService.getProperties(query).subscribe(data => {
       this.processDataStrings(data.data[0]);

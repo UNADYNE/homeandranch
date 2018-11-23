@@ -1,3 +1,14 @@
-<p>
-  dashboard works!
-</p>
+<div class="container">
+  <button class="us-button danger" (click)="downloadProperties()">DOWNLOAD PROPERTIES</button>
+  <h1>Contacts List</h1>
+  <ul>
+    <li *ngFor="let contact of contacts">
+      <h1>{{contact.date}}</h1>
+      <h3>{{contact.firstName}} {{contact.lastName}}</h3>
+      <h4>{{contact.phoneNumber}}</h4>
+      <h5>{{contact.email}}</h5>
+      <p>{{contact.message}}</p>
+      <div class="us-hr"></div>
+    </li>
+  </ul>
+</div>
