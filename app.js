@@ -14,7 +14,6 @@ const scrape = require('./routes/scrape');
 const search = require('./routes/search');
 const users = require('./routes/users');
 const mail = require('./routes/mail');
-env.config();
 app.set('port', (process.env.PORT || 8080));
 
 mongoose.connect(config.database);
