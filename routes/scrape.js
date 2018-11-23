@@ -139,6 +139,7 @@ router.get('/rets-client', (req, res, next) => {
                             for (let dataItem = 0; dataItem < searchData.results.length; dataItem++) {
                                 searchData.results[dataItem].image =
                                     `http://assets.utahrealestate.com/photos/640x480/${searchData.results[dataItem].image}`;
+                                //<editor-fold desc="new Property Object">
                                 let newProperty = new Property({
                                     listno: searchData.results[dataItem].listno, //mls
                                     accessibility: searchData.results[dataItem].accessibility,
@@ -356,6 +357,7 @@ router.get('/rets-client', (req, res, next) => {
                                     zoning: searchData.results[dataItem].zoning,
                                     zoningchar: searchData.results[dataItem].zoningchar
                                 });
+                                //</editor-fold>
                                 //persist properties to local db
                                 Property.storeProperty(newProperty, (err, callback) => {
                                     if (err) {

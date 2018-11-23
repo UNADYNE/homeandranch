@@ -42,7 +42,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   onRegisterSubmit() {
-    console.log('onRegisterSubmit clicked');
     const user = {
       firstName: this.firstName,
       lastName: this.lastName,
@@ -54,8 +53,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       subLevel: this.subLevel,
       isAdmin: this.isAdmin
     };
-    console.log(user);
-
 
     if (!this.validateService.validateRegister(user)) {
       console.warn('user validation failure');
@@ -79,11 +76,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       return false;
     }
 
-
     //register user
     this.authService.registerUser(user).subscribe(results => {
       if (results.success === true) {
-        console.log(results.user._id);
+        console.log(`registration results: ${results.msg}-${results.success}`);
         localStorage.setItem('uploadMember_id', results.user._id);
         // this.router.navigate(['/login']);
 

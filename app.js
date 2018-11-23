@@ -1,4 +1,5 @@
 const express = require('express');
+const env = require('dotenv');
 const fs = require('fs');
 const app = express();
 const path = require('path');
@@ -14,7 +15,7 @@ const scrape = require('./routes/scrape');
 const search = require('./routes/search');
 const users = require('./routes/users');
 const mail = require('./routes/mail');
-
+env.config();
 app.set('port', (process.env.PORT || 8080));
 
 mongoose.connect(config.database);
@@ -23,15 +24,15 @@ mongoose.connection.on('connected', () => {
     console.log('Connected to database ' + config.database);
 });
 
-/* http confg => dev*/
+// /* http confg => dev*/
 // const http = require('http');
 // const server = http.createServer(app);
 
 
 // /* https config => for prod */
 const https = require('https');
-const key = fs.readFileSync('../../../etc/letsencrypt/live/unadyne.com/privkey.pem');
-const cert = fs.readFileSync('../../../etc/letsencrypt/live/unadyne.com/cert.pem');
+const key = fs.readFileSync('../../../etc/letsencrypt/live/utahhomeandranch.com/privkey.pem');
+const cert = fs.readFileSync('../../../etc/letsencrypt/live/utahhomeandranch.com/cert.pem');
 
 const httpsOptions = {
     cert: cert,

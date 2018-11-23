@@ -8,3 +8,4 @@ jquery-2.2.1.min.js
 npm-debug.log
 *.jpeg
 *.gif
+.env
