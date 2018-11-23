@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+// <editor-fold desc="property model">
 PropertySchema = mongoose.Schema({
     listno: {
         type: String,
@@ -654,6 +654,8 @@ PropertySchema = mongoose.Schema({
         caption: String
     }]
 });
+// </editor-fold>
+
 
 const Property = module.exports = mongoose.model('Property', PropertySchema);
 
@@ -674,4 +676,8 @@ module.exports.searchProperties = (query, callback) => {
 
 module.exports.getAllProperties = (data, callback) => {
     Property.find(data, callback);
+};
+
+module.exports.deleteAllProperties = (query, callback) => {
+    Property.deleteMany(query, callback);
 };

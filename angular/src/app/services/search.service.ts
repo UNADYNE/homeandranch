@@ -30,4 +30,9 @@ export class SearchService {
   downloadProperties(): any {
     return this.http.get(`${this.apiUrl}scrape/rets-client`);
   }
+
+  deleteAllProperties(): any {
+    const headers = new HttpHeaders({'Content-Type' : 'application/json'});
+    return this.http.post(`${this.apiUrl}scrape/delete-all-properties`, headers);
+  }
 }

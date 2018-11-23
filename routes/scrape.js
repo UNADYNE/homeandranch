@@ -493,5 +493,12 @@ router.get('/rets-client-media', (req, res, next) => {
     });
 });
 
+router.post('/delete-all-properties', (req, res, next) => {
+   Property.deleteAllProperties({}, (error, callback) => {
+     if (error) throw error;
+     res.json({callback});
+   });
+});
+
 module.exports = router;
 

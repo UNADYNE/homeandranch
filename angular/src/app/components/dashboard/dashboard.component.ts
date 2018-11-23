@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SearchService} from "../../services/search.service";
 
 @Component({
@@ -11,7 +11,8 @@ export class DashboardComponent implements OnInit {
   contacts: any[];
   downLoadedProperties: number;
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService) {
+  }
 
   ngOnInit() {
     this.getContacts();
@@ -24,9 +25,16 @@ export class DashboardComponent implements OnInit {
   }
 
   downloadProperties() {
-    this.searchService.downloadProperties().subscribe(properties => {
-      console.log(properties.data.count);
-    })
+    this.searchService.deleteAllProperties().subscribe(results => {
+      console.log(results);
+    });
+    setTimeout(() => {
+      this.searchService.downloadProperties().subscribe(properties => {
+        console.log(properties.data.count);
+      });
+    }, 1000);
+
   }
+
 
 }

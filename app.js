@@ -1,5 +1,4 @@
 const express = require('express');
-const env = require('dotenv');
 const fs = require('fs');
 const app = express();
 const path = require('path');
@@ -27,7 +26,7 @@ mongoose.connection.on('connected', () => {
 // /* http confg => dev*/
 // const http = require('http');
 // const server = http.createServer(app);
-
+//
 
 // /* https config => for prod */
 const https = require('https');
@@ -38,8 +37,8 @@ const httpsOptions = {
     cert: cert,
     key: key
 };
-
 const server = https.createServer(httpsOptions, app);
+
 
 const io = require('socket.io').listen(server);
 
