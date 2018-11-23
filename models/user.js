@@ -39,7 +39,8 @@ const UserSchema = mongoose.Schema({  // users are t
     },
     subLevel: {
         type: Number,
-        required: true
+        required: true,
+        default: 3
     },
     isAdmin: {
         type: Boolean,
