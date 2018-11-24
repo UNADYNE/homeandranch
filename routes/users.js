@@ -65,6 +65,7 @@ router.get('/get-members-by-state/:stateName', (req, res) => {
 });
 
 router.post('/register', (req, res, next) => {
+    console.log('made it to /register');
     let newUser = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,

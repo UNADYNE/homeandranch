@@ -36,6 +36,7 @@ export class AuthService implements OnInit, AfterViewInit {
 
   registerUser(user): any {
     const headers = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    console.log(headers);
     return this.http.post(`${this.localhost}users/register`, user, headers);
   }
 
