@@ -2,10 +2,12 @@
   color: #1a237e;
 }
 
+
 .container {
   display: grid;
   /*grid-template-rows: repeat(4, 1fr);*/
 }
+
 
 .prop-pic {
   width: 600px;
@@ -24,7 +26,7 @@
 
 .prop-pic-li-div {
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   width: auto;
   height: 360px;
   box-shadow: #424242 3px 3px 12px;
@@ -49,7 +51,6 @@
 
 .price span {
   color: #558b2f;
-
 }
 .property-data {
   display: grid;
@@ -74,4 +75,90 @@
   height: 480px;
   width: 640px;
   box-shadow: #424242 3px 3px 12px;
+}
+
+
+.us-button {
+  margin-left: 45%;
+}
+
+@media screen and (max-width: 775px) {
+  .mobile-head-wrapper {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+  .address {
+    padding: 0;
+    margin: 0;
+  }
+
+  .price {
+    padding: 0;
+    margin: 0;
+  }
+  #year-built {
+    margin: 0;
+    padding: 0;
+  }
+
+  .property-data {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    padding: 0;
+    margin: 0;
+  }
+
+  .property-description {
+    margin-top: 8px;
+    padding: 0;
+    text-align: left;
+    justify-items: start;
+  }
+
+  .property-description p {
+    text-align: left;
+  }
+
+  .data-wrapper {
+    width: 100%;
+    grid-template-columns: 1fr;
+    justify-items: start;
+    margin: 0;
+    padding: 0;
+    /*white-space: nowrap;*/
+    /*overflow: hidden;*/
+  }
+
+  .property-data h4 {
+    text-align: left;
+  }
+
+  .main-pic {
+    width: 85%;
+    height: auto;
+  }
+
+  .prop-pics-ul {
+    width: 100%;
+    grid-template-columns: 1fr;
+    padding: 0;
+    margin: 0;
+  }
+
+  /*.prop-pics-li {*/
+    /*!*height: 40%;*!*/
+    /*width:100%;*/
+  /*}*/
+
+  .prop-pic-li-div {
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
+
+  .us-button {
+    margin: 0 0 .5em 35%;
+  }
+
+
 }

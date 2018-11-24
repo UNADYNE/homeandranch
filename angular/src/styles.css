@@ -143,7 +143,7 @@
   text-align: center;
   z-index: 10;
   font-size: 1.5em;
-  justify-self: center;
+  margin-left: 25%;
   opacity: .85;
 }
 
@@ -193,15 +193,16 @@
 }
 
 .us-button {
+  padding: 1em;
   font-size: 1.2em;
   font-weight: bold;
   color: #ffffff;
-  min-height: 4em;
-  width: auto;
-  margin: 2% 35%;
+  max-height: 4em;
+  max-width: 10em;
+  min-height: 2.5em;
+  min-width: 5em;
   border-radius: 5px;
   border: none;
-  padding: 0 1em;
   cursor: pointer;
   transition-duration: .4s;
 }
@@ -213,14 +214,6 @@
   -webkit-animation: active 1200ms ease 1 alternate;
   animation: active 1200ms ease 1 alternate;
   background: #5F9BE0;
-}
-
-
-.mat-dialog-container {
-  max-width: 80vw;
-  height: 100vh;
-  background-color: #ffffff;
-  z-index: 25;
 }
 
 .us-input-field {

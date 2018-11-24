@@ -68,7 +68,8 @@ export class PropertyComponent implements OnInit, AfterViewInit {
   openDialog(): void {
     const dialogRef = this.matDialog.open(PropertyComponent, {
       width: '80vw',
-      height: '80vh'
+      height: '80vh',
+      panelClass: 'property-panel'
     });
   }
 
