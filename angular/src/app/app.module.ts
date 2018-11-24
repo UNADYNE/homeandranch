@@ -35,6 +35,7 @@ import {UserService} from "./services/user.service";
 import {ValidateService} from "./services/validate.service";
 import {JwtHelper} from "angular2-jwt";
 import {AuthGuard} from "./guards/auth.guard";
+import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -65,7 +66,8 @@ const appRoutes: Routes = [
     ListnoDirective,
     PropertySliderComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
