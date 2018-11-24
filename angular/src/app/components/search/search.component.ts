@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   properties: any[];
   apiUrl: string = environment.apiUrl;
   areaFilters: string;
-  iconUrl: string = `http://localhost:8080/assets/images/icon_house.png`;
+  iconUrl: string = `${this.apiUrl}assets/images/icon_house.png`;
   filteredProperties: any;
   sanitizedImageUrls: any[];
 
