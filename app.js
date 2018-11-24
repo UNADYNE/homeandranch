@@ -73,5 +73,5 @@ module.exports = app;
 //*********************************************************************************************************************
 server.listen(app.get('port'), () => {
     let date = new Date().toTimeString().split(' ')[0];
-    console.log(`UNADYNE listening on ${app.get('port')} timestamp => ${date}`);
+    console.log(`UHR listening on ${app.get('port')} timestamp => ${date}`);
 });
