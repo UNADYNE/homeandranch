@@ -23,20 +23,20 @@ mongoose.connection.on('connected', () => {
 });
 
 // /* http confg => dev*/
-// const http = require('http');
-// const server = http.createServer(app);
-//
+const http = require('http');
+const server = http.createServer(app);
+
 
 // /* https config => for prod */
-const https = require('https');
-const key = fs.readFileSync('../../../etc/letsencrypt/live/utahhomeandranch.com/privkey.pem');
-const cert = fs.readFileSync('../../../etc/letsencrypt/live/utahhomeandranch.com/cert.pem');
-
-const httpsOptions = {
-    cert: cert,
-    key: key
-};
-const server = https.createServer(httpsOptions, app);
+// const https = require('https');
+// const key = fs.readFileSync('../../../etc/letsencrypt/live/utahhomeandranch.com/privkey.pem');
+// const cert = fs.readFileSync('../../../etc/letsencrypt/live/utahhomeandranch.com/cert.pem');
+//
+// const httpsOptions = {
+//     cert: cert,
+//     key: key
+// };
+// const server = https.createServer(httpsOptions, app);
 
 
 const io = require('socket.io').listen(server);

@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Router} from '@angular/router';
 import {environment} from '../../environments/environment';
-import {isNumber} from 'util';
 import {JwtHelper} from 'angular2-jwt';
 
 @Injectable()
@@ -36,31 +35,18 @@ export class AuthService implements OnInit, AfterViewInit {
   }
 
   registerUser(user): any {
-    return this.http.post(
-      `${this.localhost}users/register`,
-      user,
-      this.httpOptions
-    );
+    const headers = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    return this.http.post(`${this.localhost}users/register`, user, headers);
   }
 
   authenticateUser(user): any {
-    return this.http.post(
-      `${this.localhost}users/authenticate`,
-      user,
-      this.httpOptions
-    );
+    const headers = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+
+    return this.http.post(`${this.localhost}users/authenticate`, user, headers);
   }
 
   getProfile(user_id): any {
     return this.http.get(`${this.localhost}users/get-profile/${user_id}`);
-  }
-
-  // Get by state and category
-  getMembersByCategory(query): any {
-    return this.http.post(
-      `${this.localhost}users/find-members-by-category`,
-      query
-    );
   }
 
   storeUserData(token) {
