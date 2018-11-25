@@ -183,9 +183,6 @@
 }
 
 @media screen and (max-width: 899px) {
-  .wrapper {
-    display: block;
-  }
 
   .hide-on-medium {
     display: none;
@@ -197,13 +194,15 @@
 
   .map {
     width: 100vw;
-    height: 100vh;
+    height: 70vh;
     overflow-y: hidden;
   }
 
   .wrapper {
+    height: 80vh;
     grid-template-rows: none;
     grid-template-columns: none;
+    overflow: hidden;
   }
 
   #icon-upward-arrow {
