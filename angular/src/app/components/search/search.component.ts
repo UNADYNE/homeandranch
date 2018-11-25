@@ -97,12 +97,13 @@ export class SearchComponent implements OnInit, AfterViewInit {
     }
   }
 
+  // set query string based on user input
   processAllFilters(): String {
     const _areaFilters = this.processAreaFilter();
     return `${_areaFilters}`;
   }
 
-
+// initialize map centered on ogden
   initMap() {
     const query = `?zip=84404`;
     this.searchService.getProperties(query).subscribe(data => {
@@ -110,11 +111,13 @@ export class SearchComponent implements OnInit, AfterViewInit {
       this.properties = data.data;
     });
   }
-
+// sanitize live linked pics
+  /* TODO download pics to db and strip tracking code */
   testSani(url): SafeHtml {
     return this.sanitizer.bypassSecurityTrustStyle(`url(${url})`);
   }
 
+  // retrieve properties from db
   getProperties() {
     const queryString = this.processAllFilters();
     this.searchService.getProperties(queryString).subscribe(res => {
@@ -134,6 +137,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
     }
   }
 
+  //load specific property into the local storage
   loadProperty(event) {
     const query = `?listno=${event.target.title}`;
     const finalProp = {};
@@ -142,6 +146,8 @@ export class SearchComponent implements OnInit, AfterViewInit {
       data.data[0].listprice = this.formatCurrency(data.data[0].listprice);
       localStorage.setItem('prop', JSON.stringify(data.data[0]));
     });
+
+    // buffer timer for utahrealestate.com's laggy-ass server
     setTimeout(() => {
       this.openDialog();
     }, 300);
@@ -163,6 +169,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
     listing.classList.add('highlighted-listing');
   }
 
+  // open modal dialog for specific property on click
   openDialog(): void {
     if (this.screenWidth <= 800) {
       const dialogRef = this.dialog.open(PropertyComponent, {

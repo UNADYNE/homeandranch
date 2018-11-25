@@ -2,16 +2,28 @@
   <fa-icon [icon]="faArrowAltCircleUp"></fa-icon>
   <p>BACK TO TOP</p>
 </div>
-<nav class="indigo searchnav">
+<!--Desktop Nav-->
+<nav class="indigo search-nav hide-on-medium">
   <label for="area-filter"></label>
   <input type="text"
          id="area-filter"
-         placeholder="Search City, Zip, or MLS#"
+         placeholder="Search Zip Code"
          name="areaFilter"
          [(ngModel)]="areaFilters"
          (submit)="getProperties()"
   >
   <button class="us-button indigo-light-3" (click)="getProperties()" #areaFilterElem>Search</button>
+</nav>
+<!--Mobile Nav-->
+<nav class="search-nav-mobile indigo hide-on-large">
+  <input type="text"
+         id="area-filter-mobile"
+         placeholder="Search Zip Code"
+         name="areaFilter"
+         [(ngModel)]="areaFilters"
+         (submit)="getProperties()"
+  >
+  <button class="us-button-mobile indigo-light-3" (click)="getProperties()" #areaFilterElem>Search</button>
 </nav>
 <div class="wrapper">
   <div class="map">

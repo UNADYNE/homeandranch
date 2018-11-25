@@ -1,27 +1,29 @@
 #icon-upward-arrow {
   font-size: 3em;
   font-weight: bold;
-  color:rgba(255, 255, 255, .66);
+  color: rgba(255, 255, 255, .66);
   position: absolute;
   margin-top: 25%;
   margin-left: 95%;
   z-index: 10;
 }
 
-
 #icon-upward-arrow p {
   font-size: .2em;
 
 }
+
 .wrapper {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(2, 1fr);
+  height: 100vh;
+  overflow-y: hidden;
 }
 
 .map {
   height: 100vh;
-  width: 70vw;
+  width: 75vw;
 }
 
 @media screen and (max-width: 780px) {
@@ -31,28 +33,84 @@
   }
 }
 
-.serachnav {
-  /*display: grid;*/
-  /*grid-auto-columns: auto;*/
-  height: 3.5em;
+.search-nav {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  height: 7vh;
   width: 100vw;
   box-shadow: #424242 2px 2px 15px;
   padding-left: 1em;
   padding-bottom: 1.5em;
+  align-items: end;
+}
+
+.search-nav-mobile {
+  height: 10vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#area-filter-mobile {
+  justify-self: center;
+  margin-top: 3%;
+  width: 90%;
+  height: 75%;
+  box-shadow: none;
+  border: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding-left: 8px;
+}
+
+#area-filter-mobile::placeholder {
+  font-size: 1.2em;
+}
+
+.us-button-mobile {
+  margin-top: 3%;
+  width: 65%;
+  height: 75%;
+  box-shadow: none;
+  border: none;
+  padding-top: .25em;
+  padding-bottom: .5em;
+  color: #ffffff;
+  font-size: 1.1em;
+  border-radius: 4px;
+}
+
+#area-filter {
+  height: 4em;
+  width: 12.5vw;
+  border-radius: 5px;
+  padding-left: 15px;
+}
+
+#area-filter::placeholder {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.us-button {
+  margin-top: 1.5%;
+  height: 2em;
+  width: 6em;
+  padding: 0;
+  justify-self: start;
 }
 
 .side-listings {
-  position: relative;
+  /*position: relative;*/
   height: 100vh;
-  width: 100%;
-  float: right;
+  width: 25vw;
   overflow-y: scroll;
 }
 
-.pic {
-  height: 100%;
-  width: auto;
-}
+/*.pic {*/
+/*height: 100%;*/
+/*width: auto;*/
+/*}*/
 
 .side-listings-ul {
   display: grid;
@@ -62,11 +120,11 @@
 
 .side-listings-li {
   display: grid;
-  height: 24em;
+  height: 40vh;
+  width: 100%;
   background-size: cover;
-  background: #c8e6c9 no-repeat;
+  background: rgba(255, 255, 255, 0) center no-repeat;
   align-content: center;
-  /*width: 100%;*/
 }
 
 .highlighted-listing {
@@ -77,14 +135,13 @@
 
 .data {
   color: #ffffff;
-  position: absolute;
   max-width: 50%;
   margin-left: .5em;
   margin-top: 20%;
 }
 
 .data p {
-  font-size: 1em;
+  font-size: 1.33em;
 }
 
 .listing-data {
@@ -108,7 +165,6 @@
   display: none;
 }
 
-
 .addr {
   max-width: 33.3%;
   color: white;
@@ -120,93 +176,77 @@
   font-weight: 400;
 }
 
-#area-filter {
-  height: 2em;
-  width: 12.5vw;
-}
-
 @media screen and (min-width: 900px) {
   .hide-on-large {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .wrapper {
+    display: block;
+  }
+
+  .hide-on-medium {
     display: none;
   }
 
   .side-menu {
     display: none;
   }
-}
 
-@media screen and (max-width: 899px) {
   .map {
     width: 100vw;
-    height: 65vh;
+    height: 100vh;
+    overflow-y: hidden;
   }
 
   .wrapper {
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: none;
     grid-template-columns: none;
   }
 
   #icon-upward-arrow {
-    margin-left: 80%;
-    margin-top: 200%;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
   }
-}
-@media screen and (max-width: 400px) {
 
-}
+  .side-listings {
+    position: absolute;
+    bottom: 0;
+    height: 30vh;
+    width: 100vw;
+  }
 
-@media screen and (max-width: 340px) {
+  .side-listings-ul {
+    /*position: absolute;*/
+    /*bottom: 0;*/
+  }
 
-}
-
-@media (min-height: 800px) {
-
-}
-
-@media (max-height: 780px) {
   .side-listings-li {
     background-size: cover;
+    height: 30vh;
+    width: 100%;
   }
-}
 
-@media (max-height: 760px) {
+  .data p {
+    font-size: 1em;
+  }
 
-}
-
-@media (max-height: 740px) {
-
-}
-
-@media (max-height: 720px) {
-}
-
-@media (max-height: 700px) {
+  .data {
+    margin-bottom: 5%;
+  }
 
 }
 
-@media (max-height: 680px) {
-
-}
-
-@media (max-height: 660px) {
-}
-
-@media (max-height: 640px) {
-}
-
-@media (max-height: 620px) {
-}
-
-@media (max-height: 600px) {
-}
-
-@media (max-height: 580px) {
-}
+/* end media query*/
 
 /*map styles*/
 agm-map {
   height: 100%;
   width: auto;
+  overflow-y: hidden;
 }
 
 .map-icon-image {

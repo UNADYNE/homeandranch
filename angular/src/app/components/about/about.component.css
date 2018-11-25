@@ -1,0 +1,20 @@
+.wrapper {
+  height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+.temp {
+  height: 1024px;
+  width: 1024px;
+  background: url("../../../assets/images/home_rebates_logo.png") repeat;
+}
+
+@media screen and (max-width: 900px){
+  .temp {
+    height: 256px;
+    width: 256px;
+    -webkit-background-size: contain;
+    background-size: contain;
+  }
+}
