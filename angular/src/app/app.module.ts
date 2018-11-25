@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {MatDialogConfig, MatDialogModule, MatGridListModule} from '@angular/material';
+import {MatDialogConfig, MatDialogModule, MatGridListModule, MatIconModule} from '@angular/material';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './components/home/home.component';
@@ -35,7 +35,7 @@ import {UserService} from "./services/user.service";
 import {ValidateService} from "./services/validate.service";
 import {JwtHelper} from "angular2-jwt";
 import {AuthGuard} from "./guards/auth.guard";
-import { FooterComponent } from './components/footer/footer.component';
+import {FooterComponent} from './components/footer/footer.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -83,7 +83,8 @@ const appRoutes: Routes = [
     }),
     MatDialogModule,
     OverlayModule,
-    MatGridListModule
+    MatGridListModule,
+    MatIconModule
   ],
   entryComponents: [
     PropertyComponent

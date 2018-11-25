@@ -37,7 +37,6 @@ export class PropertyComponent implements OnInit, AfterViewInit {
 
   getProperty() {
     this.property = JSON.parse(localStorage.getItem('prop'));
-    console.log(this.property);
   }
 
   sanitizePic(url): SafeHtml {
@@ -65,13 +64,13 @@ export class PropertyComponent implements OnInit, AfterViewInit {
       this.setColNumsForPics();
     }
   }
-  openDialog(): void {
-    const dialogRef = this.matDialog.open(PropertyComponent, {
-      width: '80vw',
-      height: '80vh',
-      panelClass: 'property-panel'
-    });
-  }
+  // openDialog(): void {
+  //   const dialogRef = this.matDialog.open(PropertyComponent, {
+  //     width: '80vw',
+  //     height: '80vh',
+  //     panelClass: 'property-panel'
+  //   });
+  // }
 
   setColNumsForPics() {
     this.picUl.nativeElement.style.gridTemplateRows = `repeat(${Math.ceil(this.pics.length / 4)}, 1fr)`;

@@ -6,6 +6,7 @@ import {
   ViewChildren,
   QueryList,
   ElementRef,
+  HostListener
 } from '@angular/core';
 import {SearchService} from 'src/app/services/search.service';
 import {environment} from '../../../environments/environment';
@@ -13,7 +14,7 @@ import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {AgmMarker} from "@agm/core";
 import {MatDialog} from '@angular/material';
 import {PropertyComponent} from "../property/property.component";
-import {ListnoDirective} from '../../directives/listno.directive';
+import {faArrowAltCircleUp} from "@fortawesome/free-regular-svg-icons/faArrowAltCircleUp";
 
 @Component({
   selector: 'app-search',
@@ -22,21 +23,32 @@ import {ListnoDirective} from '../../directives/listno.directive';
 })
 
 export class SearchComponent implements OnInit, AfterViewInit {
-  @ViewChild('areaFilterElm') areaFilterElm: ElementRef;
+
+  /* TODO clean up ViewChild Properties */
+  @ViewChild('areaFilterElem') areaFilterElem: ElementRef;
+  @ViewChild('sideListings') sideListings: ElementRef;
   @ViewChild("map") mapElm: ElementRef;
   @ViewChildren('marker') marker: QueryList<AgmMarker>;
   @ViewChild('listingItem') listingItem: ElementRef;
+  @ViewChild('backToTop') backToTop: ElementRef;
+  @HostListener('window:resize', ['$event']) onResize(event?) {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+  }
+  @HostListener('window:load', ['$event'])onLoad(event?) {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+  }
 
   lat: number;
   long: number;
-  bgImage: any;
+  screenHeight: any;
+  screenWidth: any;
   properties: any[];
   apiUrl: string = environment.apiUrl;
   areaFilters: string;
-  iconUrl: string = `${this.apiUrl}assets/images/icon_house.png`;
-  filteredProperties: any;
-  sanitizedImageUrls: any[];
-
+  iconUrl: string = `../../assets/images/icon_house.png`;
+  faArrowAltCircleUp = faArrowAltCircleUp;
   constructor(private searchService: SearchService,
               private sanitizer: DomSanitizer,
               public _marker: AgmMarker,
@@ -50,7 +62,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-
+    this.backToTop.nativeElement.style.display = 'none';
   }
 
 
@@ -64,8 +76,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
       filter.value = this.areaFilters;
     }
     let _query = `?${filter.query}=${filter.value}`;
-    this.areaFilterElm.nativeElement.text = '';
-    this.areaFilterElm.nativeElement.value = '';
+    this.areaFilterElem.nativeElement.value = '';
     if (_query.length <= 0) {
       return null;
     } else {
@@ -153,12 +164,31 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(PropertyComponent, {
-      width: '80vw',
-      height: '90vh'
-    });
+    if (this.screenWidth <= 800) {
+      const dialogRef = this.dialog.open(PropertyComponent, {
+        minWidth: '100vw',
+        height: '90vh'
+      });
+    } else {
+      const dialogRef = this.dialog.open(PropertyComponent, {
+        minWidth: '90vw',
+        height: '90vh'
+      });
+    }
   }
 
+  // Show Back To Top Icon
+  showBacToTop() {
+    this.backToTop.nativeElement.style.display = 'block';
+    setTimeout(() => {
+      this.backToTop.nativeElement.style.display = 'none';
+    }, 2500);
+  }
+
+  // Scroll .side-listings div back to top
+  scrollToTop() {
+    this.sideListings.nativeElement.scroll(0, 0);
+  }
 
   /* TODO create listing component to pop-up in a modal when clicked either on map or sidebar*/
 }

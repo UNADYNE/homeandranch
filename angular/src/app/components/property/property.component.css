@@ -145,10 +145,10 @@
     margin: 0;
   }
 
-  /*.prop-pics-li {*/
-    /*!*height: 40%;*!*/
-    /*width:100%;*/
-  /*}*/
+  .prop-pics-li {
+    -webkit-background-size: contain;
+    background-size: contain;
+  }
 
   .prop-pic-li-div {
     background-repeat: no-repeat;
