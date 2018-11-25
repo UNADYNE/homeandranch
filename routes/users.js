@@ -72,7 +72,7 @@ router.post('/register', (req, res, next) => {
         username: req.body.username.toLocaleLowerCase(),
         email: req.body.email,
         password: req.body.password,
-        subLevel: 3,
+        subLevel: 0,
         phone: req.body.phone,
         isAdmin: req.body.isAdmin
     });
