@@ -146,7 +146,7 @@
   }
 
   .main-pic {
-    width: 95vw;
+    width: 100vw;
     height: 15em;
     padding: 0;
     margin: 0;
@@ -163,13 +163,13 @@
   }
 
   .prop-pics-li {
-    width: 100%;
+    width: 100vw;
     -webkit-background-size: contain;
     background-size: contain;
   }
 
   .prop-pic-li-div {
-    width: 100%;
+    width: 100vw;
     height: 15em;
     background-repeat: no-repeat;
     background-size: contain;
