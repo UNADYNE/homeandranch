@@ -1,10 +1,13 @@
+
 const express = require('express');
 const router = express.Router();
 const rets = require('rets-client');
 const _ = require('underscore');
 const crypto = require('crypto');
 const Property = require('../models/property');
-const async = require('async');
+const through2 = require('through2');
+const Promise = require('bluebird');
+
 
 let clientSettings = {
     loginUrl: 'http://rets18.utahrealestate.com/contact/rets/login',
@@ -30,21 +33,21 @@ function checkSessionHeader(client) {
     console.log("looking for cookie", cookie);
     if (cookie.indexOf('RETS-Session-ID') != -1) {
         let cookieSplit, retsIdx, retsCookie;
-        console.log("RETS-Session-ID found!");
+        // console.log("RETS-Session-ID found!");
         cookieSplit = cookie.split(';');
-        console.log("cookieSplit", cookieSplit);
+        // console.log("cookieSplit", cookieSplit);
         let cIdx = -1;
         _.forEach(cookieSplit, function (c, i) {
             if (c.indexOf('RETS-Session-ID')) {
                 cIdx = i;
             }
         });
-        console.log("cIdx", cIdx);
+        // console.log("cIdx", cIdx);
         if (cIdx != -1) {
-            console.log("cIdx valid... continuing");
+            // console.log("cIdx valid... continuing");
             retsCookie = cookieSplit[cIdx].split('=')[1];
-            console.log("RETS-Session-ID is ", retsCookie,
-                "... Setting client.settings.sessionId and recomputing UA-Authorization Header");
+            // console.log("RETS-Session-ID is ", retsCookie,
+            //     "... Setting client.settings.sessionId and recomputing UA-Authorization Header");
             client.settings.sessionId = retsCookie;
             // Compute new Header
             return computeUAHeader(client);
@@ -56,15 +59,15 @@ function checkSessionHeader(client) {
 
 // crypto function to reset RETS-UA-Authorization in a dynamic fashion.
 function computeUAHeader(client) {
-    var a1, retsUaAuth;
+    let a1, retsUaAuth;
     if (!client.settings.sessionId) {
-        console.log("NO SESSIONID");
+        // console.log("NO SESSIONID");
         return false
     } else {
         a1 = crypto.createHash('md5').update([clientSettings.username, clientSettings.password].join(":")).digest('hex');
         retsUaAuth = crypto.createHash('md5').update([a1, "", client.settings.sessionId || "", client.settings.version || client.headers['RETS-Version']].join(":")).digest('hex');
         client.headers['RETS-UA-Authorization'] = "Digest " + retsUaAuth;
-        console.log("New UA-Auth header set, result", client.headers['RETS-UA-Authorization']);
+        // console.log("New UA-Auth header set, result", client.headers['RETS-UA-Authorization']);
         return true
     }
 }
@@ -87,7 +90,7 @@ function outputFields(obj, opts) {
             loopFields = Object.keys(obj);
             excludeFields = [];
         }
-        for (var i = 0; i < loopFields.length; i++) {
+        for (let i = 0; i < loopFields.length; i++) {
             if (excludeFields.indexOf(loopFields[i]) != -1) {
                 continue;
             }
@@ -416,8 +419,12 @@ function scrapeMedia(listno) {
     });
 }
 
-router.get('/get-media', (req, res, next) => {
+router.get('/old-get-media', (req, res, next) => {
     rets.getAutoLogoutClient(clientSettings, (client) => {
+        if(rets.RetsError) {
+            console.log(`RetsReplyError: ${rets.getErrorMessage}`);
+            // scrapeMedia(req.query.listno);
+        }
         if (checkSessionHeader(client)) {
             return client.metadata.getResources()
                 .then(function (data) {
@@ -443,7 +450,9 @@ router.get('/get-media', (req, res, next) => {
                         caption: results.caption,
                         url: results.url
                     };
-                    res.json({results});
+                    res.json({
+                        results
+                    });
                 });
         }
     });
@@ -469,7 +478,7 @@ router.get('/rets-client-media', (req, res, next) => {
                 outputFields(data.headerInfo);
                 console.log('   ~~~~~~ Resources Metadata ~~~~~');
                 outputFields(data.results[0].info);
-                for (var dataItem = 0; dataItem < data.results[0].metadata.length; dataItem++) {
+                for (let dataItem = 0; dataItem < data.results[0].metadata.length; dataItem++) {
                     console.log("   -------- Resource " + dataItem + " --------");
                     outputFields(data.results[0].metadata[dataItem], {fields: ['ResourceID', 'StandardName', 'VisibleName', 'ObjectVersion']});
                 }
@@ -485,7 +494,7 @@ router.get('/rets-client-media', (req, res, next) => {
                 outputFields(data.headerInfo);
                 console.log('   ~~~~~~~~ Class Metadata ~~~~~~~');
                 outputFields(data.results[0].info);
-                for (var classItem = 0; classItem < data.results[0].metadata.length; classItem++) {
+                for (let classItem = 0; classItem < data.results[0].metadata.length; classItem++) {
                     console.log("   -------- Table " + classItem + " --------");
                     outputFields(data.results[0].metadata[classItem], {fields: ['ClassName', 'StandardName', 'VisibleName', 'TableVersion']});
                 }
@@ -499,6 +508,80 @@ router.post('/delete-all-properties', (req, res, next) => {
      res.json({callback});
    });
 });
+
+function doAsyncProcessing(row, index, callback) {
+    console.log("-------- Result " + index + " --------");
+    outputFields(row);
+    // must be sure callback is called when this is done
+    callback();
+}
+
+
+router.get('/get-media', (req, res, next) => {
+console.log(`listno: ${req.query.listno}`);
+// establish connection to RETS server which auto-logs out when we're done
+    rets.getAutoLogoutClient(clientSettings, function (client) {
+        // in order to have the auto-logout function work properly, we need to make a promise that either rejects or
+        // resolves only once we're done processing the stream
+        return new Promise(function (resolve, reject) {
+            console.log("====================================");
+            console.log("========  Streamed Results  ========");
+            console.log("====================================");
+            let count = 0;
+            let streamResult = client.search.stream.query("Media", "Media", `(listno=${req.query.listno})`,
+                {limit:100, offset:0});
+            let tempArray = [];
+            let processorStream = through2.obj(function (event, encoding, callback) {
+                switch (event.type) {
+                    case 'headerInfo':
+                        console.log('   ~~~~~~~~~ Header Info ~~~~~~~~~');
+                        outputFields(event.payload);
+                        callback();
+                        break;
+                    case 'data':
+                        // event.payload is an object representing a single row of results
+                        // make sure callback is called only when all processing is complete
+                        tempArray.push(event.payload);
+                        count++;
+                        doAsyncProcessing(event.payload, count, callback);
+
+                        break;
+                    case 'done':
+                        // event.payload is an object containing a count of rows actually received, plus some other things
+                        // now we can resolve the auto-logout promise
+                        resolve(event.payload.rowsReceived);
+                        callback();
+                        res.json({
+                            data: tempArray
+                        });
+                        break;
+                    case 'error':
+                        // event.payload is an Error object
+                        console.log('Error streaming RETS results: '+event.payload);
+                        streamResult.retsStream.unpipe(processorStream);
+                        processorStream.end();
+                        // we need to reject the auto-logout promise
+                        reject(event.payload);
+                        callback();
+                        break;
+                    default:
+                        // ignore other events
+                        callback();
+                }
+            });
+            streamResult.retsStream.pipe(processorStream);
+
+        });
+
+    }).catch(function (errorInfo) {
+        let error = errorInfo.error || errorInfo;
+        console.log("   ERROR: issue encountered:");
+        outputFields(error);
+        console.log('   '+(error.stack||error).replace(/\n/g, '\n   '));
+        res.json({err: errorInfo});
+    });
+});
+
 
 module.exports = router;
 
