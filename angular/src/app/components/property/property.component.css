@@ -1,13 +1,15 @@
 .wrapper {
   color: #1a237e;
+  /*height: 100vh;*/
 }
 
+/*.container {*/
+/*display: grid;*/
+/*}*/
 
-.container {
-  display: grid;
-  /*grid-template-rows: repeat(4, 1fr);*/
+.us-button {
+  margin: 0 0 .5em 35%;
 }
-
 
 .prop-pic {
   width: 600px;
@@ -21,14 +23,14 @@
   list-style: none;
   grid-gap: .5em;
   margin-left: 2em;
-  width: 95%;
+  width: 24em;
 }
 
 .prop-pic-li-div {
   background-repeat: no-repeat;
   background-size: cover;
-  width: 40em;
-  height: 30em;
+  width: 27em;
+  height: 19.2em;
   box-shadow: #424242 3px 3px 12px;
 }
 
@@ -38,6 +40,7 @@
   padding: 1em 2em;
   grid-gap: 1em;
 }
+
 .address {
   padding: 0 20%;
 }
@@ -45,6 +48,7 @@
 .price {
   margin-left: 35%;
 }
+
 #year-built {
   margin-left: 35%;
 }
@@ -52,6 +56,7 @@
 .price span {
   color: #558b2f;
 }
+
 .property-data {
   display: grid;
   grid-template-rows: repeat(3, .75fr);
@@ -70,23 +75,22 @@
 }
 
 .main-pic {
-  margin-left: 28%;
+  margin-left: 0;
   margin-bottom: 1em;
-  height: 480px;
-  width: 640px;
+  height: 20em;
+  width: 15em;
   box-shadow: #424242 3px 3px 12px;
 }
 
-
-.us-button {
-  margin-left: 45%;
-}
-
 @media screen and (max-width: 775px) {
+
+
   .mobile-head-wrapper {
     grid-template-columns: 1fr;
     justify-items: start;
+    width: 20em;
   }
+
   .address {
     padding: 0;
     margin: 0;
@@ -96,6 +100,7 @@
     padding: 0;
     margin: 0;
   }
+
   #year-built {
     margin: 0;
     padding: 0;
@@ -125,8 +130,6 @@
     justify-items: start;
     margin: 0;
     padding: 0;
-    /*white-space: nowrap;*/
-    /*overflow: hidden;*/
   }
 
   .property-data h4 {
@@ -134,31 +137,38 @@
   }
 
   .main-pic {
-    width: 40em;
-    height: 30em;
+    width: 20em;
+    height: 15em;
+    padding: 0;
+    margin: 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
   }
 
   .prop-pics-ul {
-    width: 40em;
+    width: 20em;
     grid-template-columns: 1fr;
     padding: 0;
     margin: 0;
   }
 
   .prop-pics-li {
+    width: 20em;
     -webkit-background-size: contain;
     background-size: contain;
   }
 
   .prop-pic-li-div {
+    width: 20em;
+    height: 15em;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 
   }
 
   .us-button {
-    margin: 0 0 .5em 35%;
+    margin-left: 35%;
   }
-
 
 }

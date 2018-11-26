@@ -1,7 +1,9 @@
 <div class="wrapper">
+  <!--Wrapper and Container so as to add a loading gif when data not returning correctly
+       from the utahrealestate.com's busted ass laggy ass server-->
   <div *ngIf="canRender" class="container">
     <div class="mobile-head-wrapper">
-      <button class="us-button teal-darken-4 property-button" (click)="closeDialog()">Close</button>
+      <button class="us-button teal-darken-4 top-button" (click)="closeDialog()">Close</button>
       <h1 class="address">{{property.housenum}} {{property.dirpre}} {{property.street}}
         {{property.dirpost}}{{property.streettype}} {{property.city}}, {{property.state}} {{property.zip}}
       </h1>
@@ -44,7 +46,7 @@
     </ul>
     <h1>listno: {{property.listno}}</h1>
   </div>
-  <button class="us-button teal-darken-4 property-button" (click)="closeDialog()">Close</button>
+  <button class="us-button teal-darken-4 bottom-button" (click)="closeDialog()">Close</button>
 </div>
 <!--</div>-->
 

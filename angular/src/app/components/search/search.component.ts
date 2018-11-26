@@ -174,7 +174,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
     if (this.screenWidth <= 800) {
       const dialogRef = this.dialog.open(PropertyComponent, {
         minWidth: '100vw',
-        height: '90vh'
+        height: '100vh'
       });
     } else {
       const dialogRef = this.dialog.open(PropertyComponent, {

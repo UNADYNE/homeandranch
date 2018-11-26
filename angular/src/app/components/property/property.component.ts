@@ -52,7 +52,6 @@ export class PropertyComponent implements OnInit, AfterViewInit {
     console.log(`getPropPics()`);
     let tempArray = [];
     this.searchService.getMedia(listno).subscribe((pics) => {
-      console.log(pics.data);
       for (let i = 0; i < pics.data.length; i++) {
         let tempObj = {
           caption: '',
