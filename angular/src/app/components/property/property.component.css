@@ -91,17 +91,26 @@
     width: 20em;
   }
 
+  .mobile-head-wrapper h1, h2, h3, h4 {
+    width: 95vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
   .address {
+    width: 95vw;
     padding: 0;
     margin: 0;
   }
 
   .price {
+    width: 95vw;
     padding: 0;
     margin: 0;
   }
 
   #year-built {
+    width: 95vw;
     margin: 0;
     padding: 0;
   }
@@ -137,7 +146,7 @@
   }
 
   .main-pic {
-    width: 20em;
+    width: 95vw;
     height: 15em;
     padding: 0;
     margin: 0;
@@ -147,20 +156,20 @@
   }
 
   .prop-pics-ul {
-    width: 20em;
+    width: 95vw;
     grid-template-columns: 1fr;
     padding: 0;
     margin: 0;
   }
 
   .prop-pics-li {
-    width: 20em;
+    width: 100%;
     -webkit-background-size: contain;
     background-size: contain;
   }
 
   .prop-pic-li-div {
-    width: 20em;
+    width: 100%;
     height: 15em;
     background-repeat: no-repeat;
     background-size: contain;

@@ -219,14 +219,13 @@
   }
 
   .side-listings-ul {
-    /*position: absolute;*/
-    /*bottom: 0;*/
+    width: 100vw;
   }
 
   .side-listings-li {
     background-size: cover;
     height: 30vh;
-    width: 100%;
+    width: 100vw;
   }
 
   .data p {
