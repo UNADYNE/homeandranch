@@ -171,8 +171,8 @@
   .prop-pic-li-div {
     width: 100vw;
     height: 15em;
-    background-repeat: no-repeat;
     background-size: cover;
+    background: no-repeat center;
 
   }
 
