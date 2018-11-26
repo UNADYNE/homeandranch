@@ -9,8 +9,8 @@ import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
   styleUrls: ['./property.component.css']
 })
 export class PropertyComponent implements OnInit, AfterViewInit {
-@ViewChild('picUl')picUl: ElementRef;
-@ViewChild('picLi')picLi: ElementRef;
+  @ViewChild('picUl') picUl: ElementRef;
+  @ViewChild('picLi') picLi: ElementRef;
   property: any;
   pics: any[];
   canRender: boolean = false;
@@ -25,14 +25,19 @@ export class PropertyComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if(this.property && this.property.hasOwnProperty('listno')){
-      this.getPropPics(this.property.listno);
+    if (this.property && this.property.hasOwnProperty('listno')) {
+      setTimeout(() => {
+        this.getPropPics(this.property.listno);
+        console.log(`this.property.listno = ${this.property.listno}`);
+      }, 500);
+
     }
   }
 
   closeDialog() {
     const dialogRef = this.matDialog.closeAll();
     localStorage.removeItem('prop');
+    this.canRender = false;
   }
 
   getProperty() {
@@ -44,34 +49,31 @@ export class PropertyComponent implements OnInit, AfterViewInit {
   }
 
   getPropPics(listno) {
+    console.log(`getPropPics()`);
     let tempArray = [];
     this.searchService.getMedia(listno).subscribe((pics) => {
-      for(let i =0; i< pics.results.results.length; i++){
+      console.log(pics.data);
+      for (let i = 0; i < pics.data.length; i++) {
         let tempObj = {
           caption: '',
           url: ''
         };
-        tempObj.caption = pics.results.results[i].caption;
-        tempObj.url = pics.results.results[i].url;
+        tempObj.caption = pics.data[i].caption;
+        tempObj.url = pics.data[i].url;
         tempArray.push(tempObj);
       }
       this.pics = tempArray;
-      if(this.pics.length > 0) {
+      if (this.pics.length > 0) {
         this.canRender = true;
+        console.log(`this.canRender`);
       }
     });
-    if(this.canRender){
+    if (this.canRender) {
       this.setColNumsForPics();
     }
   }
-  // openDialog(): void {
-  //   const dialogRef = this.matDialog.open(PropertyComponent, {
-  //     width: '80vw',
-  //     height: '80vh',
-  //     panelClass: 'property-panel'
-  //   });
-  // }
 
+  //set the number of grid-template-columns based on the number of pictures returned
   setColNumsForPics() {
     this.picUl.nativeElement.style.gridTemplateRows = `repeat(${Math.ceil(this.pics.length / 4)}, 1fr)`;
   }

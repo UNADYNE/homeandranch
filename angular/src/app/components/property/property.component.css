@@ -27,8 +27,8 @@
 .prop-pic-li-div {
   background-repeat: no-repeat;
   background-size: cover;
-  width: auto;
-  height: 360px;
+  width: 40em;
+  height: 30em;
   box-shadow: #424242 3px 3px 12px;
 }
 
@@ -134,12 +134,12 @@
   }
 
   .main-pic {
-    width: 85%;
-    height: auto;
+    width: 40em;
+    height: 30em;
   }
 
   .prop-pics-ul {
-    width: 100%;
+    width: 40em;
     grid-template-columns: 1fr;
     padding: 0;
     margin: 0;
