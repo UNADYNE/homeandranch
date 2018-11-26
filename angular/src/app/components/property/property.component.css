@@ -164,15 +164,15 @@
 
   .prop-pics-li {
     width: 100vw;
-    -webkit-background-size: contain;
-    background-size: contain;
+    -webkit-background-size: cover;
+    background-size: cover;
   }
 
   .prop-pic-li-div {
     width: 100vw;
     height: 15em;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 
   }
 
