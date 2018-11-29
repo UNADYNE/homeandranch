@@ -38,7 +38,8 @@ export class LoginComponent implements OnInit {
       this.authService.authenticateUser(user).subscribe(data => {
         this.authService.storeUserData(data.token);
         this.authToken = this.authService.loadToken();
-        console.log('isAdmin: ', this.authService.isAdmin());
+        this.authService.isAdmin() ? this.router.navigate(['/dashboard']) : this.router.navigate(['/']);
+        location.reload();
       });
     }
   }

@@ -12,6 +12,8 @@
 
     <div *ngIf="loggedIn" class="box-button hide-on-medium" (click)="logOut()">Logout</div>
 
+    <div *ngIf="isAdmin" class="box-button hide-on-medium" [routerLink]="['/dashboard']">Dashboard</div>
+
 
   </div>
 

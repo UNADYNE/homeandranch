@@ -15,6 +15,7 @@ import {AgmMarker} from "@agm/core";
 import {MatDialog} from '@angular/material';
 import {PropertyComponent} from "../property/property.component";
 import {faArrowAltCircleUp} from "@fortawesome/free-regular-svg-icons/faArrowAltCircleUp";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-search',
@@ -49,22 +50,34 @@ export class SearchComponent implements OnInit, AfterViewInit {
   areaFilters: string;
   iconUrl: string = `../../assets/images/icon_house.png`;
   faArrowAltCircleUp = faArrowAltCircleUp;
+  queryParams: any;
+
   constructor(private searchService: SearchService,
               private sanitizer: DomSanitizer,
               public _marker: AgmMarker,
-              public dialog: MatDialog
+              public dialog: MatDialog,
+              private route: ActivatedRoute
   ) {
+    this.route.params.subscribe(params => {
+      this.queryParams = params.params;
+    })
   }
 
 
   ngOnInit() {
-    this.initMap();
+    if(JSON.parse(localStorage.getItem(`coords`)).lat.toString() > 1){
+      this.lat = JSON.parse(localStorage.getItem(`coords`)).lat;
+      this.long = JSON.parse(localStorage.getItem(`coords`)).lng;
+    } else {
+      this.lat = 41.03522159999999;
+      this.long = -111.93855209999998;
+    }
   }
 
   ngAfterViewInit() {
     this.backToTop.nativeElement.style.display = 'none';
+    this.initMap();
   }
-
 
   processAreaFilter(): String {
     let filter = {
@@ -105,8 +118,14 @@ export class SearchComponent implements OnInit, AfterViewInit {
 
 // initialize map centered on ogden
   initMap() {
-    const query = `?zip=84404`;
-    this.searchService.getProperties(query).subscribe(data => {
+    let query = ``;
+    if(this.queryParams > 2) {
+      query = this.queryParams;
+    } else {
+      query = `?zip=84101`;
+    }
+
+    this.searchService.getProperties(this.queryParams).subscribe(data => {
       this.processDataStrings(data.data);
       this.properties = data.data;
     });

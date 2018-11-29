@@ -33,6 +33,7 @@
     "core-js": "^2.5.4",
     "jquery": "^2.2.4",
     "material-icons": "^0.2.3",
+    "ng4-geoautocomplete": "^0.1.0",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.3.3",
     "snazzy-info-window": "1.1.0",

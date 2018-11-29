@@ -245,8 +245,25 @@
   border-radius: 5px;
 }
 
+.us-input-field-inline input {
+  width: 38.2%;
+  height: 2.5em;
+  border: #2f627a 2px solid;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#lte {
+  margin-left: 2.5%;
+}
+
 .us-input-field label {
   color: #2f627a;
+}
+
+.text-shadow {
+  text-shadow: #000000 2px 2px 4px;
 }
 
 

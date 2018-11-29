@@ -36,6 +36,7 @@ import {ValidateService} from "./services/validate.service";
 import {JwtHelper} from "angular2-jwt";
 import {AuthGuard} from "./guards/auth.guard";
 import {FooterComponent} from './components/footer/footer.component';
+import {Ng4GeoautocompleteModule} from "ng4-geoautocomplete";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
   {path: 'map', component: MapComponent, pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, pathMatch: 'full'},
-  {path: 'search', component: SearchComponent, pathMatch: 'full'},
+  {path: 'search/:params', component: SearchComponent},
+  {path: 'search', component: SearchComponent},
   {path: 'slider', component: PropertySliderComponent, pathMatch: 'full'},
   {path: 'register', component: RegisterComponent, pathMatch: 'full'},
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
@@ -73,18 +75,19 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
-    FlashMessagesModule.forRoot(),
     FontAwesomeModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBYGM1RhThp4Yclz0WIr00-gpi50MN6_Ls'
-    }),
     MatDialogModule,
     OverlayModule,
     MatGridListModule,
-    MatIconModule
+    MatIconModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBYGM1RhThp4Yclz0WIr00-gpi50MN6_Ls'
+    }),
+    FlashMessagesModule.forRoot(),
+    Ng4GeoautocompleteModule.forRoot()
   ],
   entryComponents: [
     PropertyComponent

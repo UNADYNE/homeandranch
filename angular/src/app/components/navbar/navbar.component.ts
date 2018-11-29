@@ -7,7 +7,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {AuthService} from "../../services/auth.service";
 
-declare let $: any;
 
 @Component({
   selector: "app-navbar",
@@ -32,7 +31,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.sideMenu.nativeElement.style.display = "none";
     this.sideMenuCloseButton.nativeElement.style.display = "none";
-    console.log(`loggedIn: ${this.loggedIn}`);
   }
 
   openSideNav() {

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild, ElementRef, OnDestroy} from '@angular/core';
 import {MatDialog} from "@angular/material";
 import {SearchService} from "../../services/search.service";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
@@ -8,36 +8,32 @@ import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
   templateUrl: './property.component.html',
   styleUrls: ['./property.component.css']
 })
-export class PropertyComponent implements OnInit, AfterViewInit {
+export class PropertyComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('picUl') picUl: ElementRef;
   @ViewChild('picLi') picLi: ElementRef;
   property: any;
   pics: any[];
-  canRender: boolean = false;
 
   constructor(private matDialog: MatDialog,
               private searchService: SearchService,
               private sanitizer: DomSanitizer) {
-  }
-
-  ngOnInit() {
     this.getProperty();
   }
 
-  ngAfterViewInit() {
-    if (this.property && this.property.hasOwnProperty('listno')) {
-      setTimeout(() => {
-        this.getPropPics(this.property.listno);
-        console.log(`this.property.listno = ${this.property.listno}`);
-      }, 500);
+  ngOnInit() {
+  }
 
-    }
+  ngAfterViewInit() {
+    this.getPropPics(this.property.listno);
+  }
+
+  ngOnDestroy() {
+    localStorage.removeItem('prop');
   }
 
   closeDialog() {
-    const dialogRef = this.matDialog.closeAll();
+    this.matDialog.closeAll();
     localStorage.removeItem('prop');
-    this.canRender = false;
   }
 
   getProperty() {
@@ -49,9 +45,8 @@ export class PropertyComponent implements OnInit, AfterViewInit {
   }
 
   getPropPics(listno) {
-    console.log(`getPropPics()`);
     let tempArray = [];
-    this.searchService.getMedia(listno).subscribe((pics) => {
+    this.searchService.getMedia(listno).subscribe(pics => {
       for (let i = 0; i < pics.data.length; i++) {
         let tempObj = {
           caption: '',
@@ -62,19 +57,18 @@ export class PropertyComponent implements OnInit, AfterViewInit {
         tempArray.push(tempObj);
       }
       this.pics = tempArray;
-      if (this.pics.length > 0) {
-        this.canRender = true;
-        console.log(`this.canRender`);
-      }
     });
-    if (this.canRender) {
-      this.setColNumsForPics();
-    }
+    this.setColNumsForPics();
+    console.log(this.pics);
+
+
   }
 
   //set the number of grid-template-columns based on the number of pictures returned
   setColNumsForPics() {
-    this.picUl.nativeElement.style.gridTemplateRows = `repeat(${Math.ceil(this.pics.length / 4)}, 1fr)`;
+    if(this.pics) {
+      this.picUl.nativeElement.style.gridTemplateRows = `repeat(${Math.ceil(this.pics.length / 4)}, 1fr)`;
+    }
   }
 
 }

@@ -1,41 +1,56 @@
-<div class="wrapper">
+<div class="home-wrapper">
   <div id="slider">
     <div class="slide slide1" #slide>
       <div class="slide-content">
         <span>
-          <p class="flow-text">
             Utah Home and Ranch Real Estate
-          </p>
         </span>
       </div>
     </div>
     <div class="slide slide2" #slide>
       <div class="slide-content">
         <span>
-          <p class="flow-text">Click the contact button to get started</p>
+          Click the search button to get started
         </span>
       </div>
     </div>
     <div class="slide slide3" #slide>
       <div class="slide-content">
         <span>
-          <p class="flow-text">Don't wait for your dream home</p>
+          Don't wait for your dream home
         </span>
       </div>
     </div>
     <div class="slide slide4" #slide>
       <div class="slide-content">
         <span>
-          <p class="flow-text">And give you a rebate of up to one percent of the sale price!</p>
+          And give you a rebate of up to one percent of the sale price!
         </span>
       </div>
     </div>
     <div class="slide slide5" #slide>
       <div class="slide-content">
         <span>
-          <p class="flow-text">Where I will put your next real estate transaction on autopilot</p>
+          Where I will put your next real estate transaction on autopilot
         </span>
       </div>
     </div>
   </div>
 </div>
+<form class="search-form">
+  <div class="home-input">
+    <p class="text-shadow text-white">Search For Your Dream Home</p>
+    <ng4geo-autocomplete id="geo-search" [userSettings]="geoSettings" (componentCallback)="geoCallback($event)"></ng4geo-autocomplete>
+  </div>
+  <div class="home-input-inline">
+    <input type="text" id="gte" name="gte" [(ngModel)]="gte" placeholder="Price From">
+    <input type="text" id="lte" name="lte" [(ngModel)]="lte" placeholder="Price To">
+  </div>
+  <div class="home-input-select">
+    <select [title]="propertyTypes" name="type" id="type" [(ngModel)]="propType">
+      <option [ngValue]="undefined" disabled  selected> Please Select A Property Type </option>
+      <option *ngFor="let type of propertyTypes" [ngValue]="type.type" #selectedOption>{{type.type}}</option>
+    </select>
+  </div>
+  <button type="button" class="home-search-button indigo" (click)="searchProperties()">Search</button>
+</form>

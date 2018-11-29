@@ -1,13 +1,14 @@
 <div class="wrapper">
   <!--Wrapper and Container so as to add a loading gif when data not returning correctly
        from the utahrealestate.com's busted ass laggy ass server-->
-  <div *ngIf="canRender" class="container">
+  <div class="container">
     <div class="mobile-head-wrapper">
       <button class="us-button teal-darken-4 top-button" (click)="closeDialog()">Close</button>
       <h1 class="address">{{property.housenum}} {{property.dirpre}} {{property.street}}
         {{property.dirpost}}{{property.streettype}} {{property.city}}, {{property.state}} {{property.zip}}
       </h1>
       <h2 class="price">List Price: <span>{{property.listprice}}</span></h2>
+      <h2 class="price">{{property.proptype}}</h2>
       <h2 id="year-built">Built in {{property.yearblt}}</h2>
       <h2 class="price" *ngIf="property.yearremodeled.length > 0">Remodeled in {{property.yearremodeled}}</h2>
     </div>
@@ -35,6 +36,7 @@
     </div>
     <div class="property-description">
       <p>{{property.publicremarks}}</p>
+      <p class="agents">Listed by {{property.agtfirst}} {{property.agtlast}} of {{property.offname}}</p>
     </div>
 
     <div class="main-pic" [style.background-image]="sanitizePic(property.image)"></div>
@@ -44,7 +46,7 @@
         </div>
       </li>
     </ul>
-    <h1>listno: {{property.listno}}</h1>
+    <!--<h1>listno: {{property.listno}}</h1>-->
   </div>
   <button class="us-button teal-darken-4 bottom-button" (click)="closeDialog()">Close</button>
 </div>
