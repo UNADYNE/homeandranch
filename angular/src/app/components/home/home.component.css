@@ -6,23 +6,7 @@
   background-color: #5b5b63;
 }
 
-@media (min-width :300px) and (max-width :480px) {
-  .home-cards {
-    position: relative;
-    grid-template-columns: 1fr;
-    margin: 0;
-    padding: 0;
-  }
-}
 
-@media(min-width: 100px) and (max-width: 299px) {
-  .home-cards {
-    position: relative;
-    grid-template-columns: 1fr;
-    margin: 0;
-    padding: 0;
-  }
-}
 
 #slider,
 .wrap,
@@ -202,6 +186,25 @@ select option {
 
 .fade-in {
   animation: fadeIn 1s ease-in 1 forwards;
+}
+
+@media screen and (max-width: 899px) {
+  .search-form {
+    width: 95vw;
+    padding: 0;
+    left: 10%;
+  }
+
+  .search-form select input {
+    width: 100%;
+  }
+
+  #lte {
+    margin-left: 5px;
+    width: 35%;
+  }
+
+
 }
 
 @keyframes zoomIn {
