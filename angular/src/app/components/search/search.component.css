@@ -16,7 +16,7 @@
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(2, 1fr);
-  height: 100vh;
+  height: 68vh;
   overflow: hidden;
 }
 
