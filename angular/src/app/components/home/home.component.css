@@ -6,8 +6,6 @@
   background-color: #5b5b63;
 }
 
-
-
 #slider,
 .wrap,
 .slide-content {
@@ -106,9 +104,9 @@
 }
 
 /*.custom-autocomplete_dropdown {*/
-  /*background-color: rgba(0, 67, 175, .5);*/
-  /*color: #ffffff;*/
-  /*height: 2em;*/
+/*background-color: rgba(0, 67, 175, .5);*/
+/*color: #ffffff;*/
+/*height: 2em;*/
 /*}*/
 
 .home-input input::placeholder {
@@ -137,6 +135,7 @@ input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   opacity: 0;
 }
+
 .home-input-select select {
   margin-top: 5px;
   width: 81%;
@@ -148,8 +147,8 @@ input[type=number]::-webkit-inner-spin-button {
   background-color: rgba(0, 67, 175, .5);
   color: #ffffff;
   -webkit-background-clip: padding-box;
-  -moz-background-clip:    padding;
-  background-clip:padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
 }
 
 select option {
@@ -166,8 +165,8 @@ select option {
   background: rgba(0, 67, 175, .5) center;
   transition: background 0.8s;
   -webkit-background-clip: padding-box;
-  -moz-background-clip:    padding;
-  background-clip:padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
 }
 
 .home-search-button:active {
@@ -175,7 +174,6 @@ select option {
   background-size: 100%;
   transition: background 0s;
 }
-
 
 @keyframes fadeIn {
   to {
@@ -189,10 +187,14 @@ select option {
 }
 
 @media screen and (max-width: 899px) {
+  .slide-content span {
+    margin-bottom: 60%;
+  }
+
   .search-form {
-    width: 95vw;
-    padding: 0;
-    left: 10%;
+    width: 90vw;
+    padding-left: 10%;
+    left: 0;
   }
 
   .search-form select input {
@@ -203,7 +205,6 @@ select option {
     margin-left: 5px;
     width: 35%;
   }
-
 
 }
 

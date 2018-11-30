@@ -22,7 +22,7 @@ mongoose.connection.on('connected', () => {
     console.log('Connected to database ' + config.database);
 });
 
-// /* http confg => dev*/
+/* http confg => dev*/
 // const http = require('http');
 // const server = http.createServer(app);
 

@@ -12,9 +12,6 @@
 
     <div *ngIf="loggedIn" class="box-button hide-on-medium" (click)="logOut()">Logout</div>
 
-    <div *ngIf="isAdmin" class="box-button hide-on-medium" [routerLink]="['/dashboard']">Dashboard</div>
-
-
   </div>
 
 
@@ -42,6 +39,12 @@
       </li>
       <li (click)="closeSideNav()">
         <div [routerLink]="['/search']">Search</div>
+      </li>
+      <li (click)="closeSideNav()">
+        <div *ngIf="loggedIn" class="box-button hide-on-medium" (click)="logOut()">Logout</div>
+      </li>
+      <li (click)="closeSideNav()">
+        <div *ngIf="isAdmin" class="box-button hide-on-medium" [routerLink]="['/dashboard']">Dashboard</div>
       </li>
     </ul>
   </div>
