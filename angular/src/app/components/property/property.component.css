@@ -158,6 +158,7 @@
     background-size: cover;
     background-position: center;
     margin-bottom: .75em;
+    margin-left: 0;
   }
 
   .prop-pics-ul {
@@ -178,8 +179,8 @@
     height: 15em;
     padding: 0;
     margin: 0;
-    -webkit-background-size: cover;
-    background-size: cover;
+    -webkit-background-size: contain;
+    background-size: contain;
     background-position: center;
   }
 
