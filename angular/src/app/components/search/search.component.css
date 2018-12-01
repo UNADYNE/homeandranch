@@ -16,8 +16,6 @@
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(2, 1fr);
-  height: 100vh;
-  overflow: hidden;
 }
 
 .map {
@@ -195,14 +193,6 @@
     width: 100vw;
     height: 70vh;
     overflow-y: hidden;
-  }
-
-  .wrapper {
-    height: 80vh;
-    grid-template-rows: none;
-    grid-template-columns: none;
-    overflow: hidden;
-    width: 100vw;
   }
 
   #icon-upward-arrow {

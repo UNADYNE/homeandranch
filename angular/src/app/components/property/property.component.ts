@@ -24,7 +24,6 @@ export class PropertyComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.getPropPics(this.property.listno);
   }
 
   ngOnDestroy() {
@@ -38,6 +37,7 @@ export class PropertyComponent implements OnInit, AfterViewInit, OnDestroy {
 
   getProperty() {
     this.property = JSON.parse(localStorage.getItem('prop'));
+    this.getPropPics(this.property.listno);
   }
 
   sanitizePic(url): SafeHtml {
@@ -60,8 +60,6 @@ export class PropertyComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     this.setColNumsForPics();
     console.log(this.pics);
-
-
   }
 
   //set the number of grid-template-columns based on the number of pictures returned
