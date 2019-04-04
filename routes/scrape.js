@@ -11,8 +11,8 @@ const Promise = require('bluebird');
 
 let clientSettings = {
     loginUrl: 'http://rets18.utahrealestate.com/contact/rets/login',
-    username: 'cortwrong',
-    password: 'c0rtwrong',
+    username: process.env.SCRAPE_USER,
+    password: process.env.SCRAPE_PASS,
     version: 'RETS/1.7.2',
     userAgent: 'RETS node-client/5.2.3'
 };
